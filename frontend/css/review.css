@@ -1,0 +1,43 @@
+body {
+    height: 100px;
+    width: 100px;
+    margin:0;
+    padding: 0;
+    overflow: hidden;
+    background-image: url("background.jpg");
+    /* animation: color 10s ease infinite; */
+}
+h1{
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.intro{
+    text-align: justify;
+    font-family: monteserrat;
+    font-size: 20px;
+    width: 50%;
+    margin: 10% auto;
+    line-height: 1.6;
+}
+
+@keyframes color{
+    0%{
+        background: green;
+    }
+    20%{
+        background: yellow;
+    }    
+    40%{
+        background: red;
+    }    
+    60%{
+        background: blue;
+    }
+    80%{
+        background: orange
+    }
+    100%{
+        background: white;
+    }    
+}
