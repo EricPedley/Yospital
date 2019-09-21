@@ -1,0 +1,61 @@
+body {
+    text-align: center;
+    font-weight: 300;
+    margin:0;
+    padding: 0;
+    background-image: url("/frontend/images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /* animation: color 10s ease infinite; */
+}
+  
+  .box {
+    width: 40%;
+    height: 200px;
+    background: orange;
+    border-radius: 2px;
+    padding: 10px;
+   text-align: center;
+  }
+  
+  .a {
+    margin: 120vh auto 0 auto;
+  }
+  
+  .b {
+    margin: 40vh auto 0 auto;
+  }
+h1{
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.intro{
+    text-align: center;
+    font-family: monteserrat;
+    font-size: 20px;
+    margin: 10%;
+    line-height: 1.6;
+}
+
+@keyframes color{
+    0%{
+        background: green;
+    }
+    20%{
+        background: yellow;
+    }    
+    40%{
+        background: red;
+    }    
+    60%{
+        background: blue;
+    }
+    80%{
+        background: orange
+    }
+    100%{
+        background: white;
+    }    
+}
