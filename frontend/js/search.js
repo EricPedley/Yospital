@@ -93,18 +93,18 @@ function loadData(first) {
         ids.push(id);
         counter++;
     }
-    $.post("https://justcare.ruizalex.com/hospital-info", JSON.stringify({ids: ids}), function (data) {
+    $.post("https://justcare.ruizalex.com/hospital-info", JSON.stringify({ ids: ids }), function (data) {
         console.log(data);
-        console.log("array from: "+Array.from(JSON.parse(data)));
+        console.log("array from: " + Array.from(JSON.parse(data)));
         var dataParsed = JSON.parse(data);
         var dataArray = [];
-        for (let key of Object.keys(dataParsed)){
-          console.log(dataParsed[key]);
-          console.log(key);
-          dataParsed[key].id = key;
-          dataArray.push(dataParsed[key]);
+        for (let key of Object.keys(dataParsed)) {
+            console.log(dataParsed[key]);
+            console.log(key);
+            dataParsed[key].id = key;
+            dataArray.push(dataParsed[key]);
         }
-        dataArray.forEach((hospital,index) => {
+        dataArray.forEach((hospital, index) => {
             let name = hospital.name;
             let proximity = dists[index];
             let address = hospital.address;
@@ -118,9 +118,11 @@ function loadData(first) {
                 qcare += rating["Quality of Care"];
                 total++;
             });
-            cSens /= total;
-            hosp /= total;
-            qcare /= total;
+            if (total > 0) {
+                cSens /= total;
+                hosp /= total;
+                qcare /= total;
+            }
             let id = hospital.id;
             let gmaps = "https://www.google.com/maps/place/" + address.replace(/\s/g, "+");
             let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5"><a href="hospitalTemplate.html?id=' + id + '">' + name + '</a></font></center><div class="col-md-3"><font size="4">Distance: ' + Math.round(proximity * 10) / 10 + ' Miles</font></div>' + '<div class="col-md-12"><center><a href ="' + gmaps + '">' + address + '</a></center></div>' + '<font size="4"><div class="col-md-3">Overall: <br><span class="rating" data-default-rating="' + (hosp + cSens + qcare) / 3 + '" disabled></span></div><div class="col-md-3">Hospitality: <br><span class="rating" data-default-rating="' + hosp + '" disabled></span></div><div class="col-md-3">Cultural Sensitivity: <br><span class="rating" data-default-rating="' + cSens + '" disabled></span></div><div class="col-md-3">Quality of Care: <br><span class="rating" data-default-rating="' + qcare + '" disabled></span></div></font></div>';
@@ -171,11 +173,11 @@ function doTesterStuff() {
     });
 }
 
-function postReview(hospitalID,review) {
+function postReview(hospitalID, review) {
     $.post(
         "http://localhost:3000/submit-review",
         JSON.stringify({
-            hospitalID : review
+            hospitalID: review
         }), function (data) {
             console.log("response:" + data);
         }

@@ -1,0 +1,53 @@
+#map {
+    background-color: #9EB3B9;
+    color: #FDF7ED;
+    width: 500px;
+    height: 500px;
+}
+
+#zipinput {
+    color: #152E4D;
+}
+
+#attributes{
+    height:500px;
+}
+
+body {
+    background-color: #152E4D;
+}
+
+.border {
+    background-color: #FDF7ED;
+}
+
+.botBorder {
+    border-bottom: 1px solid;
+}
+
+input {
+    border: none;
+    margin-bottom: 10px;
+}
+
+.summary {
+    margin-bottom: 50px;
+}
+
+font {
+    color: #9EB3B9;
+}
+
+.rating {
+    font-size: 20px;
+}
+
+.navbar-brand {
+    color:#FDF7ED;
+}
+
+.nav-link {
+    color:#9EB3B9;
+    padding-top:4px;
+    padding-left:8px;
+}
