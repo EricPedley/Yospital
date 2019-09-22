@@ -1,5 +1,6 @@
 var database;
 var counter = 0;
+var firstTen=[];
 $(document).ready(() => {
     $(window).bind('scroll', function () {
         if ($(window).scrollTop() >= $('#bottom').offset().top + $('#bottom').outerHeight() - window.innerHeight) {
@@ -16,10 +17,10 @@ $(document).ready(() => {
                 makeAPIPost(zipcode, function (apidata) {
                     console.log(apidata);
                     console.log("starting foreach");
-                    loadData();
+                    loadData(true);
                     $('#zip').html('');
-                    
-                    $('#map').html('<center><div class="mapouter"><div class="gmap_canvas"><iframe width="590" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q='+zipcode+'&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:590px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:590px;}</style></div></center>');
+                    //addMap(zipcode);
+                    //$('#map').html('<center><div class="mapouter"><div class="gmap_canvas"><iframe width="590" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q='+zipcode+'&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:590px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:590px;}</style></div></center>');
                     //$('#map').html('<div class="mapouter"><div class="gmap_canvas"><iframe width="590" height="500" id="gmap_canvas" src="https://www.google.com/maps/search/hospitals/@37.7734358,-122.4400006,13.35z" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:590px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:590px;}</style></div>');
                     $('#botheader').html('<font size=6>Hospitals Near You:</font>');
                     updateRatings();
@@ -39,9 +40,25 @@ function makeAPIPost(zipcode, callback) {
     });
 }
 
-function loadData() {
+function initMap() {
+    // The location of Uluru
+    var mapcenter = {lat: -25.344, lng: 131.036};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 4, center: mapcenter});
+    // The marker, positioned at Uluru
+    firstTen.forEach((hospital,index)=>{
+        let marker = new google.maps.Marker({position:{hospital.lat,hospital.long}})
+    });
+    var marker = new google.maps.Marker({position: mapcenter, label: "upside down land",map: map});
+  }
+
+function loadData(first) {
     for (let i = 0; i < 10; i++) {
         let hospital = database[counter];
+        if(first){
+            firstTen.push(hospital);
+        }
         let id = hospital.id;
         let name = hospital.name;
         let address = hospital.address;
@@ -50,10 +67,10 @@ function loadData() {
         let cSens = rating["Cultural Sensitivity"];
         let hosp = rating["Hospitality"];
         let qcare = rating["Quality of Care"];
-        if(i===0)
-            console.log(address.replace(/\s/g,"+"));
-        let gmaps = "https://www.google.com/maps/place/"+address.replace(/\s/g,"+");
-        let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5"><a href="hospitalTemplate.html?id='+id+'">' + name + '</a></font></center><div class="col-md-3"><font size="4">Distance: ' + Math.round(proximity*10)/10 + ' Miles</font></div>'+'<div class="col-md-12"><center><a href ="'+gmaps+'">'+address+'</a></center></div>'+'<font size="4"><div class="col-md-3">Overall: <br><span class="rating" data-default-rating="' + (hosp + cSens) / 2 + '" disabled></span></div><div class="col-md-3">Hospitality: <br><span class="rating" data-default-rating="' + hosp + '" disabled></span></div><div class="col-md-3">Cultural Sensitivity: <br><span class="rating" data-default-rating="' + cSens + '" disabled></span></div><div class="col-md-3">Quality of Care: <br><span class="rating" data-default-rating="' + qcare + '" disabled></span></div></font></div>';
+        if (i === 0)
+            console.log(address.replace(/\s/g, "+"));
+        let gmaps = "https://www.google.com/maps/place/" + address.replace(/\s/g, "+");
+        let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5"><a href="hospitalTemplate.html?id=' + id + '">' + name + '</a></font></center><div class="col-md-3"><font size="4">Distance: ' + Math.round(proximity * 10) / 10 + ' Miles</font></div>' + '<div class="col-md-12"><center><a href ="' + gmaps + '">' + address + '</a></center></div>' + '<font size="4"><div class="col-md-3">Overall: <br><span class="rating" data-default-rating="' + (hosp + cSens) / 2 + '" disabled></span></div><div class="col-md-3">Hospitality: <br><span class="rating" data-default-rating="' + hosp + '" disabled></span></div><div class="col-md-3">Cultural Sensitivity: <br><span class="rating" data-default-rating="' + cSens + '" disabled></span></div><div class="col-md-3">Quality of Care: <br><span class="rating" data-default-rating="' + qcare + '" disabled></span></div></font></div>';
         $(element).appendTo("#summaries");
         counter++;
     }

@@ -21,12 +21,21 @@
     <!--Font Awesome image library-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        #map {
+            background-color:#9EB3B9;
+            color:#FDF7ED;
+            width:500px;
+            height:500px;
+        }
+        #zipinput {
+            color:#152E4D;
+        }
         body {
             background-color:#152E4D;
         }
 
         .border {
-            background-color: #9EB3B9;
+            background-color: #FDF7ED;
         }
 
         .botBorder {
@@ -43,7 +52,7 @@
         }
 
         font{
-            color:#FDF7ED;
+            color:#9EB3B9;
         }
 
         .rating {
@@ -77,9 +86,11 @@
         </div>
         <div id="map" class="col-md-8 border">
             <center id="zip">
-                Enter your zip code:<div id="zipinputdiv"></div>
+                Enter your zip code:<div id="zipinputdiv" ></div>
             </center>
-            <center>map</center>
+            <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWPDBtuM_FeyGfD58O3LTNzyx_z7TeREI&callback=initMap">
+    </script>
         </div>
     </div>
     <div id="bottom" class="container">
