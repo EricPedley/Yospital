@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors');
 const fs = require('fs');
 const distance = require('./distancecalc');
 
@@ -8,6 +9,7 @@ console.log("Reading hospitals.json into memory...");
 const hospitals = JSON.parse(fs.readFileSync('../hospitals.json'));
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (req,res) => {
   // Send hospitals close to SF
