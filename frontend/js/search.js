@@ -10,6 +10,7 @@ $(document).ready(() => {
                 apidata.hospitals.forEach((hospital,index) => {
                     let id = hospital.id;
                     let name = hospital.name;
+                    let address=hospital.address;
                     let proximity = hospital.proximity;
                     let rating = hospital.rating;
                     let cSens = rating["Cultural Sensitivity"];
@@ -22,7 +23,8 @@ $(document).ready(() => {
                 $('#botheader').html('<font size=6>Hospitals Near You:</font>');
                 updateRatings();
             } else {
-                $('<center id = "ziperror">Please enter a zip code</center>').appendTo('#zipinputdiv');
+                alert("Please enter a zip code");
+                //$('<center id = "ziperror">Please enter a zip code</center>').appendTo('#zipinputdiv');
             }
         }
     });
