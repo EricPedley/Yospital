@@ -6,7 +6,7 @@
 a,
 a:focus,
 a:hover {
-  color: #9eb3b9;
+  color: #fdf7ed;
   text-shadow: none;
 }
 
@@ -28,16 +28,18 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #fdf7ed;
+  /* background-image: url("../images/background.jpg"
+)*/
+  
 }
 
 
 body {
-  display: -ms-flexbox;
   display: flex;
-  color: #152e4d;
+  color: #9eb3b9;
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
   /*box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);*/
+  background-color: #152e4d;
 }
 
 .cover-heading {
@@ -46,8 +48,13 @@ body {
 
 
 
-.cover-container {
-  max-width: 42em;
+.landing-container {
+  max-width: 100em;
+  background-color: #152e4d;
+}
+
+.info-container {
+  background-color: #152e4d;
 }
 
 
@@ -65,14 +72,14 @@ body {
 .nav-masthead .nav-link {
   padding: .25rem 0;
   font-weight: 700;
-  color: rgba(252, 167, 111, 0.4);
+  color: #9eb3b9;
   background-color: transparent;
   border-bottom: .25rem solid transparent;
 }
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(252, 167, 111, 0.9)
+  border-bottom-color: #9eb3b9;
 }
 
 .nav-masthead .nav-link + .nav-link {
@@ -103,6 +110,7 @@ body {
 .cover .btn-lg {
   padding: .75rem 1.25rem;
   font-weight: 700;
+  background-color: #a1ddda;
 }
 
 
@@ -110,5 +118,5 @@ body {
  * Footer
  */
 .mastfoot {
-  color: rgb(250, 150, 83)
+  color: #
 }
