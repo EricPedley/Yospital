@@ -1,5 +1,5 @@
-const hospitalList = require('hospital-list');
-const hospitalInfo = require('hospital-info');
+const hospitalList = require('./hospital-list');
+const hospitalInfo = require('./hospital-info');
 
 module.exports = {
   "hospital-list": hospitalList,
