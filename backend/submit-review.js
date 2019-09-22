@@ -5,12 +5,39 @@ module.exports = (req, res) => {
     let collectionKey="hospitals";
     if (data && (typeof data === "object")) {
         Object.keys(data).forEach(docKey => {
-            firestore.collection(collectionKey).doc(docKey).set({"reviews":data},{merge:true}).then((res) => {
-                console.log("Document " + docKey + " successfully written!");
+            firestore.collection(collectionkey).doc(docKey).get()
+              .then(doc => {
+                if (!doc.exists) {
+                  res.status(400).send(`No such document "${docKey}"`);
+                }
 
-            }).catch((error) => {
-                console.error("Error writing document: ", error);
-            });
+                let rev = doc.data().reviews;
+
+                if (Array.isArray(rev)) {
+                  rev.push(data[docKey]);
+
+                  firestore.collection(collectionKey).doc(docKey)
+                    .update({reviews: rev})
+                    .then((res) => {
+                        res.send(`Document ${docKey} successfully written!`);
+                    }).catch((error) => {
+                        res.status(500).send("Error writing document: " + error);
+                        console.error("Error writing document: ", error);
+                    });
+                }
+                else {
+                  rev[docKey] = data[docKey];
+
+                  firestore.collection(collectionKey).doc(docKey)
+                    .update({reviews: rev})
+                    .then((res) => {
+                        res.send(`Document ${docKey} successfully written!`);
+                    }).catch((error) => {
+                        res.status(500).send("Error writing document: " + error);
+                        console.error("Error writing document: ", error);
+                    });
+                }
+              });
         });
     }
 }
