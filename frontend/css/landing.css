@@ -3,9 +3,9 @@
  */
 
 /* Links */
-a,
-a:focus,
-a:hover {
+nav a,
+nav a:focus,
+nav a:hover {
   color: #fdf7ed;
   text-shadow: none;
 }
@@ -30,7 +30,7 @@ body {
   height: 100%;
   /* background-image: url("../images/background.jpg"
 )*/
-  
+
 }
 
 
