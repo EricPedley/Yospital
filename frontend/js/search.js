@@ -141,23 +141,33 @@ function doTesterStuff() {
     $("#tester").keypress(function (event) {
         if (event.keyCode === 13) {
             $.post(
-                "http://localhost:3000/submit-review.js",
+                "http://localhost:3000/submit-review",
                 JSON.stringify({
                     "0000000004": {
                         "id": "me@example.com",
                         "name": "Jane Doe",
                         "rating": {
-                            // The following are all numbers from 1 to 5
                             "Cultural Sensitivity": Math.random() * 5,
                             "Hospitality": Math.random() * 5,
                             "Quality of Care": Math.random() * 5
                         },
                         "comment": "This was alright."
                     }
-                }),function(data) {
-                    console.log("response:"+data);
+                }), function (data) {
+                    console.log("response:" + data);
                 }
-                );
+            );
         }
     });
+}
+
+function postReview(hospitalID,review) {
+    $.post(
+        "http://localhost:3000/submit-review",
+        JSON.stringify({
+            hospitalID : review
+        }), function (data) {
+            console.log("response:" + data);
+        }
+    );
 }
