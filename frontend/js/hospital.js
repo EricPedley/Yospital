@@ -7,7 +7,20 @@ var c = url.searchParams.get("id");
 
 var database;
 $(document).ready(() => {
-
+    $("#submitButton").click(function(event) {
+        // let data = {
+        //     c:{
+        //         id:"sample@example.com",
+        //         name:"foo bar",
+        //         rating: {
+        //             "Cultural Sensitivity":document.getElementById("c").data-rating,
+        //             "Hospitality":$("#h").data-rating,
+        //             "Quality of Care":$("#q").data-rating
+        //         }
+        //     }
+        // }
+        console.log(document.getElementById("c").innerHTML);//.substring(document.getElementById("c").innerHTML.indexOf("data-rating")));
+    });
     makeAPIPost(c, function (apidata) {
         console.log(apidata);
         console.log("starting foreach");
@@ -135,7 +148,18 @@ updateRatings = ()=>{
             var r = new SimpleStarRating(ratings[i]);
 
             ratings[i].addEventListener('rate', function (e) {
-                console.log('Rating: ' + e.detail);
+                ratings[i].value=e.details;
             });
         }
 };
+
+function postReview(hospitalID, review) {
+    $.post(
+        "http://localhost:3000/submit-review",
+        JSON.stringify({
+            hospitalID: review
+        }), function (data) {
+            console.log("response:" + data);
+        }
+    );
+}

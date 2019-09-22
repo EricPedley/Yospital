@@ -51,9 +51,9 @@ font {
     padding-top:4px;
     padding-left:8px;
 }
-a,
-a:focus,
-a:hover {
+nav a,
+nav a:focus,
+nav a:hover {
   color: #fdf7ed;
   text-shadow: none;
 }
