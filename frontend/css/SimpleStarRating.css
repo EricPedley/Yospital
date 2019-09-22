@@ -28,7 +28,7 @@ SOFTWARE.
   display: none;
   font-size: 50px;
   font-weight: bold;
-  color: #3af;
+  color: #FF553D;
   white-space: nowrap; }
   
 
@@ -39,7 +39,7 @@ SOFTWARE.
 
 .rating .star::before {
   display: inline-block;
-  color: #aaa;
+  color: #FDF7ED;
   content: '☆';
   width: 1em;
   height: 1em; }
@@ -53,8 +53,7 @@ SOFTWARE.
   opacity: 0;
   width: 0;
   height: 0;
-  transition: all 0.1s linear;
-  overflow: hidden; }
+  transition: all 0.1s linear;}
 
 .rating:not([disabled]) .star:hover::after,
 .rating .star.active::after {
