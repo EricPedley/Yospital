@@ -118,5 +118,11 @@ body {
  * Footer
  */
 .mastfoot {
-  color: #
+  /* color: # */
+}
+
+#story {
+  box-sizing: border-box;
+  background-color: #FDF7ED;
+  padding: 20rem 5rem;
 }

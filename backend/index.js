@@ -3,7 +3,7 @@ const cors = require('cors');
 const fs = require('fs');
 const distance = require('./distancecalc');
 const https = require('https');
-const hospitalList = require('./hospital-list');
+const endpoints = require('./endpoints');
 
 var app = express()
 
@@ -13,7 +13,8 @@ const hospitals = JSON.parse(fs.readFileSync('../hospitals.json'));
 app.use(express.json({type:"*/*"}));
 app.use(cors());
 
-app.post('/hospital-list', hospitalList);
+app.post('/hospital-list', endpoints["hospital-list"]);
+app.post('/hospital-info', endpoints["hospital-info"]);
 
 app.listen(3000);
 console.log("Now listening on port 3000");
