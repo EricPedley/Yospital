@@ -45,9 +45,9 @@ const getHospitalData = (lat, long) => {
           parseFloat(x.LONGITUDE)
         ),
         rating: {
-          "Cultural Sensitivity": 5,
-          "Hospitality": 5,
-          "Quality of Care": 5
+          "Cultural Sensitivity": Math.random()*5,
+          "Hospitality": Math.random()*5,
+          "Quality of Care": Math.random()*5
         }
       };
     }
