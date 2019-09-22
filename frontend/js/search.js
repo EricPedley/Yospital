@@ -95,9 +95,6 @@ function loadData(first) {
     }
     $.post("https://justcare.ruizalex.com/hospital-info", JSON.stringify({ids: ids}), function (data) {
         console.log(data);
-<<<<<<< HEAD
-        JSON.parse(data).forEach((hospital, index) => {
-=======
         console.log("array from: "+Array.from(JSON.parse(data)));
         var dataParsed = JSON.parse(data);
         var dataArray = [];
@@ -108,7 +105,6 @@ function loadData(first) {
           dataArray.push(dataParsed[key]);
         }
         dataArray.forEach((hospital,index) => {
->>>>>>> Fix search.html stuff
             let name = hospital.name;
             let proximity = dists[index];
             let address = hospital.address;
