@@ -1,46 +1,39 @@
+const admin = require('firebase-admin');
+
+//Secret key stored at ./secretkey.json
+let serviceAccount = require('./secretkey.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+let db = admin.firestore();
+
 module.exports = (req, res) => {
-  let mockdata =
-    [
-      {
-      name: "Hospital Name",
-      address: "123 Example St.",
-      lat: "0",
-      long: "0",
-      website: "www.example.com",
-      reviews: [
-        {
-      		"id": "me@example.com",
-      		"name": "Jane Doe",
-          "rating": {
-            // The following are all numbers from 1 to 5
-            "Cultural Sensitivity": Math.random()*5,
-            "Hospitality": Math.random()*5,
-            "Quality of Care": Math.random()*5
-          },
-      		"comment": "This was alright."
+  var data = req.body;
+  if (!data.id && !data.ids)
+    res.status(400).send("Must send one or more hospital IDs.");
+  if (data.id)
+    db.collection('hospitals').doc(data.id).get()
+      .then(doc => {
+        if (!doc.exists) {
+          res.status(400).send(`Document with ID ${data.id} doesn't exist.`);
+        } else {
+          res.send(JSON.stringify({[data.id]: doc.data()}));
         }
-      ]
-    },
-    {
-      name: "Hospital Name 2",
-      address: "124 Example St.",
-      lat: "0",
-      long: "0.1",
-      website: "www.example2.com",
-      reviews: [
-        {
-      		"id": "me@example2.com",
-      		"name": "John Doe",
-          "rating": {
-            // The following are all numbers from 1 to 5
-            "Cultural Sensitivity": Math.random()*5,
-            "Hospitality": Math.random()*5,
-            "Quality of Care": Math.random()*5
-          },
-      		"comment": "This was good i guess."
-        }
-      ]
-    }
-  ];
-  res.send(JSON.stringify(mockdata));
+      });
+  else if (data.ids) {
+    const refs = data.ids.map(x => db.collection('hospitals').doc(x));
+    let updateFunction = async t => {
+      const promises = await Promise.all(refs.map(x=>t.get(x)));
+      return Object.assign(...data.ids.map((k,i) => ({[k]: promises[i].data()})))
+    };
+    let transaction = db.runTransaction(updateFunction)
+      .then(result => {
+        res.send(JSON.stringify(result));
+      })
+      .catch(err => {
+        res.status(500).send("Failure getting records from firebase: "+err);
+      });
+  }
 };

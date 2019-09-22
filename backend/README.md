@@ -32,24 +32,14 @@ Returns JSON data in following format:
     "id": "0",
     "name": "...",
     "address": "...",
-    "proximity": ".2", //in miles
+    "proximity": "...", //in miles
     "lat": "...",
     "long": "...",
     "rating": {
       // all out of 5 stars
-      "Cultural Sensitivity": "4.9",
-      "Hospitality": "4.7"
-    }
-  },
-  {
-    "id": "1",
-    "name": "...",
-    "address": "...",
-    "proximity": ".2", //in miles
-    "rating": {
-      // all out of 5 stars
-      "Cultural Sensitivity": "4.9",
-      "Hospitality": "4.7"
+      "Cultural Sensitivity": "...",
+      "Hospitality": "...",
+      "Quality of Care": "..."
     }
   },
   ...
