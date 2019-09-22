@@ -17,39 +17,35 @@ $(document).ready(() => {
                     "Hospitality":$("#h").html().match(/star active/g).length,
                     "Quality of Care":$("#q").html().match(/star active/g).length
                 },
-                comments:$("#comment").val()
+                comment:$("#comment").val()
             }
         }
-        console.log(data);
+        postReview(data);
+        
         //console.log($("#c").html().match(/star active/g).length);//.substring(document.getElementById("c").innerHTML.indexOf("data-rating")));
     });
     makeAPIPost(c, function (apidata) {
-        console.log(apidata);
-        console.log("starting foreach");
         loadData();
-        $('#zip').html('');
-        $('#botheader').html('<font size=6>Hospitals Near You:</font>');
-        //updateRatings();
     });
 
         
     });
     function makeAPIPost(x, callback) {
         $.post("https://justcare.ruizalex.com/hospital-info", JSON.stringify({ id: x }), function (data) {
-            console.log(data);
+            
             database = JSON.parse(data);
             callback(database);
         });
     }
 function loadData() {
 
-    let hospital = database[c];
+    let hospital = database;
     let name = hospital.name;
     let address = hospital.address;
   let lat = hospital.lat;
   let long = hospital.long;
   let website = hospital.website
-  let id = hospital.reviews[0].name;
+  let reviews = hospital.reviews;
   let rating = hospital.reviews[0].rating;
   let ratingView = '<div class="col-md-3"><font size="4">' + rating + '</font></div>';
   let cSens = rating["Cultural Sensitivity"];
@@ -155,12 +151,10 @@ updateRatings = ()=>{
         }
 };
 
-function postReview(hospitalID, review) {
+function postReview(review) {
     $.post(
-        "http://localhost:3000/submit-review",
-        JSON.stringify({
-            hospitalID: review
-        }), function (data) {
+        "https://justcare.ruizalex.com/submit-review",
+        JSON.stringify(review), function (data) {
             console.log("response:" + data);
         }
     );
