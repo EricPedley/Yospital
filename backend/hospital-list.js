@@ -45,6 +45,8 @@ const getHospitalData = (lat, long) => {
         id: x.ID,
         name: x.NAME,
         address: `${x.ADDRESS}\n${x.CITY}, ${x.STATE}\n${x.ZIP}`,
+        long: x.LONGITUDE,
+        lat: x.LATITUDE,
         proximity: distance(
           parseFloat(lat),
           parseFloat(long),
