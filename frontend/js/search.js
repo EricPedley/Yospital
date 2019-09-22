@@ -47,8 +47,8 @@ function loadData(first) {
     let ids = [];
     let lats = [];
     for (let i = 0; i < 10; i++) {
-        let hospital = database[counter]; 
-        console.log(hospital);  
+        let hospital = database[counter];
+        console.log(hospital);
         if (first) {
             let pos = {
                 lat: hospital.lat,
@@ -59,9 +59,9 @@ function loadData(first) {
                     document.getElementById('map'), { zoom: 13, center: pos });
             }
             let offsetY = 0;
-            lats.forEach((otherLat)=>{
-                if(Math.abs(hospital.lat-otherLat)<0.001) {
-                    offsetY=-20;
+            lats.forEach((otherLat) => {
+                if (Math.abs(hospital.lat - otherLat) < 0.001) {
+                    offsetY = -20;
                     console.log("offset tiem");
                 }
             });
@@ -71,7 +71,7 @@ function loadData(first) {
                 scaledSize: new google.maps.Size(40, 40),
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(20, 40),
-                labelOrigin: new google.maps.Point(90,offsetY)
+                labelOrigin: new google.maps.Point(90, offsetY)
             };
 
             let marker = new google.maps.Marker({
@@ -90,19 +90,30 @@ function loadData(first) {
         ids.push(id);
         counter++;
     }
-    $.post("http://localhost:3000/hospital-info",JSON.stringify(ids),function(data) {
-        Array.from(JSON.parse(data)).forEach(hospital=>{
+    $.post("http://localhost:3000/hospital-info", JSON.stringify(ids), function (data) {
+        console.log(data);
+        JSON.parse(data).forEach(hospital => {
             let name = hospital.name;
             let address = hospital.address;
             let proximity = hospital.proximity;
-            let rating = hospital.rating;
-            let cSens = rating["Cultural Sensitivity"];
-            let hosp = rating["Hospitality"];
-            let qcare = rating["Quality of Care"];
+            let reviews = hospital.reviews;
+            let cSens,hosp,qcare;
+            let total=0;
+            reviews.forEach(review => {
+                let rating=review.rating;
+                cSens += rating["Cultural Sensitivity"];
+                hosp += rating["Hospitality"];
+                qcare += rating["Quality of Care"];
+                total++;
+            });
+            cSens/=total;
+            hosp/=total;
+            qcare/=total;
+            let id =hospital.id;
             let gmaps = "https://www.google.com/maps/place/" + address.replace(/\s/g, "+");
             let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5"><a href="hospitalTemplate.html?id=' + id + '">' + name + '</a></font></center><div class="col-md-3"><font size="4">Distance: ' + Math.round(proximity * 10) / 10 + ' Miles</font></div>' + '<div class="col-md-12"><center><a href ="' + gmaps + '">' + address + '</a></center></div>' + '<font size="4"><div class="col-md-3">Overall: <br><span class="rating" data-default-rating="' + (hosp + cSens) / 2 + '" disabled></span></div><div class="col-md-3">Hospitality: <br><span class="rating" data-default-rating="' + hosp + '" disabled></span></div><div class="col-md-3">Cultural Sensitivity: <br><span class="rating" data-default-rating="' + cSens + '" disabled></span></div><div class="col-md-3">Quality of Care: <br><span class="rating" data-default-rating="' + qcare + '" disabled></span></div></font></div>';
             $(element).appendTo("#summaries");
-           
+
         });
     });
 }
