@@ -34,11 +34,11 @@ function loadData() {
   let lat = hospital.lat;
   let long = hospital.long;
   let website = hospital.website
-  let id = hospital.reviews[0].id;
+  let id = hospital.reviews[0].name;
   let rating = hospital.reviews[0].rating;
-  let ratingView = '<div class="col-md-3"><font size="4">' + rating + '</font></div>'
+  let ratingView = '<div class="col-md-3"><font size="4">' + rating + '</font></div>';
   let cSens = rating["Cultural Sensitivity"];
-  
+  let idName = '<div><font size= "30">' + '-' + id + '</font></div>';
   let cSensRating = '<span class="rating" data-default-rating="' + cSens + '" disabled></span>';
   let comments = hospital.reviews[0].comment;
   let hosp = rating["Hospitality"];
@@ -53,6 +53,8 @@ function loadData() {
   console.log(hospRating);
   console.log(cSensRating);
   console.log(comment);
+  console.log(id);
+  console.log(idName);
   $(QOC).appendTo("#qoc");
   $(comment).appendTo("#comment");
   $(element).appendTo("#summary");
@@ -61,6 +63,7 @@ function loadData() {
   $(cSensRating).appendTo("#cSen");
   $(hospRating).appendTo("#hosp");
   $(average).appendTo("#average");
+  $(idName).appendTo("id");
 }
         // let hospital = database;
         // let id = hospital.id;
