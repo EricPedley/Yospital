@@ -48,26 +48,20 @@ function loadData() {
     let reviews = hospital.reviews;
     let id = c;
     if (!Array.isArray(reviews))
-        reviews = Object.values(reviews);
-    let rating;
-    if (reviews[0])
-        rating = reviews[0].rating;
+      reviews = Object.values(reviews);
+    let rating = reviews[0] ? reviews[0].rating : undefined;
     let ratingView = '<div class="col-md-3"><font size="4">' + rating + '</font></div>';
-    let cSens = rating["Cultural Sensitivity"];
+    let cSens = rating ? rating["Cultural Sensitivity"] : 0;
     let idName = '<div><font size= "30">' + '-' + id + '</font></div>';
     let cSensRating = '<span class="rating" data-default-rating="' + cSens + '" disabled></span>';
-    let comments = reviews[0].comment;
-    let hosp = rating["Hospitality"];
+    let comments = rating ? reviews[0].comment : "No one has rated this hospital yet";
+    let hosp = rating ? rating["Hospitality"] : 0;
+    let qoc = rating ? rating["Quality of Care"] : 0
     let hospRating = '<span class="rating" data-default-rating="' + hosp + '" disabled></span>';
-    let average = '<span class="rating" data-default-rating="' + (hosp + cSens) / 2 + '" disabled></span>';
-    
-    let qoc = rating["Quality of Care"]
+    let average = '<span class="rating" data-default-rating="' + (hosp + cSens + qoc) / 3 + '" disabled></span>';
     let QOC = '<span class="rating" data-default-rating="' + qoc + '" disabled></span>';
     let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5">' + id + '</a></font></center><div class="col-md-3"><font size="4">Distance: ' + lat + long + ' Miles</font></div>' + '<div class="col-md-12"><center><a href ="' + rating + '">' + website + '</a></center></div>' + '<font size="4"><div class="col-md-3">Overall: <br><span class="rating" data-default-rating="' + (hosp + cSens) / 2 + '" disabled></span></div><div class="col-md-3">Hospitality: <br><span class="rating" data-default-rating="' + hosp + '" disabled></span></div><div class="col-md-3">Cultural Sensitivity: <br><span class="rating" data-default-rating="' + cSens + '" disabled></span></div><div class="col-md-3">Quality of Care: <br><span class="rating" data-default-rating="' + hosp + '" disabled></span></div></font></div>';
     let comment = '<div><font size= "50">' + comments + '</font></div>';
-    if (comments === undefined) {
-        comment = "";
-    }
     console.log(nameTitle);
     console.log(hospRating);
     console.log(cSensRating);
@@ -78,75 +72,13 @@ function loadData() {
     $(comment).appendTo("#comment");
     $(element).appendTo("#summary");
     $(ratingView).appendTo("#review");
+    // $(nameTitle).appendTo("#nameTitle");
     $(cSensRating).appendTo("#cSen");
     $(hospRating).appendTo("#hosp");
     $(average).appendTo("#average");
     $(idName).appendTo("id");
     updateRatings();
 }
-// let hospital = database;
-// let id = hospital.id;
-// let name = hospital.name;
-// let nameTitle = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5">'+name+'</font></center>';
-// let address=hospital.address;
-// let proximity = hospital.proximity;
-// let rating = hospital.rating;
-// let cSens = rating["Cultural Sensitivity"];
-// let cSensRating = '<span class="rating" data-default-rating="'+cSens+'" disabled></span></div></font></div>';
-// let hosp = rating["Hospitality"];
-// let hospRating = '<div class="col-md-4">Hospitality: <span class="rating" data-default-rating="'+hosp+'" disabled></span></div>';
-// let average = '<span class="rating" data-default-rating="'+(hosp+cSens)/2+'" disabled></span>';
-// let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5">'+name+'</font></center><div class="col-md-3"><font size="4">Distance: '+proximity+' Miles</font></div><font size="4"><div class="col-md-4">Overall: <span class="rating" data-default-rating="'+(hosp+cSens)/2+'" disabled></span></div><div class="col-md-4">Hospitality: <span class="rating" data-default-rating="'+hosp+'" disabled></span></div><div class="col-md-4">Cultural Sensitivity: <span class="rating" data-default-rating="'+cSens+'" disabled></span></div></font></div>';
-// $(element).appendTo("#summaries");
-// $(average).appendTo("#average");
-// $(cSensRating).appendTo("#cSens");
-// $(hospRating).appendTo("#hosp");
-// $(nameTitle).appendTo('#name');
-
-
-// $(document).ready(() => {
-//     let input = '<input type = text id="zipinput"></input>';
-//     $("#zipinputdiv").html(input);
-//     $("#zipinput").keypress(function (event) {
-//         if (event.keyCode === 13) {//enter key
-//             let zipcode = $('#zipinput').val();
-//             if (zipcode.match(/(^\d{5}$)|(^\d{5}-\d{4}$)/)) {//if input is a 5 digit number(zip code format)
-//                 let apidata = makeAPIRequest(zipcode, 20);
-//                 console.log(apidata);
-//                 apidata.forEach((hospital,index) => {
-//                     let id = hospital.id;
-//                     let name = hospital.name;
-//                     let nameTitle = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5">'+name+'</font></center>';
-//                     let address=hospital.address;
-//                     let proximity = hospital.proximity;
-//                     let rating = hospital.rating;
-//                     let cSens = rating["Cultural Sensitivity"];
-//                     let cSensRating = '<span class="rating" data-default-rating="'+cSens+'" disabled></span></div></font></div>';
-//                     let hosp = rating["Hospitality"];
-//                     let hospRating = '<div class="col-md-4">Hospitality: <span class="rating" data-default-rating="'+hosp+'" disabled></span></div>';
-//                     let average = '<span class="rating" data-default-rating="'+(hosp+cSens)/2+'" disabled></span>';
-//                     let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5">'+name+'</font></center><div class="col-md-3"><font size="4">Distance: '+proximity+' Miles</font></div><font size="4"><div class="col-md-4">Overall: <span class="rating" data-default-rating="'+(hosp+cSens)/2+'" disabled></span></div><div class="col-md-4">Hospitality: <span class="rating" data-default-rating="'+hosp+'" disabled></span></div><div class="col-md-4">Cultural Sensitivity: <span class="rating" data-default-rating="'+cSens+'" disabled></span></div></font></div>';
-//                     $(element).appendTo("#summaries");
-//                     $(average).appendTo("#average");
-//                     $(cSensRating).appendTo("#cSens");
-//                     $(hospRating).appendTo("#hosp");
-//                     $(nameTitle).appendTo('#name');
-
-
-//                 });
-//                 $('#zip').html('');
-//                 $('#botheader').html('<font size=6>Hospitals Near You:</font>');
-//                 updateRatings();
-//             } else {
-//                 alert("Please enter a zip code");
-//                 //$('<center id = "ziperror">Please enter a zip code</center>').appendTo('#zipinputdiv');
-//             }
-//         }
-//     });
-// });
-
-
-
 updateRatings = () => {
     var ratings = document.getElementsByClassName('rating');
     for (var i = 0; i < ratings.length; i++) {
