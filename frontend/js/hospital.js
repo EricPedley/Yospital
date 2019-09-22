@@ -2,14 +2,33 @@ var urlparameter = window.location.href;
 var url = new URL(urlparameter);
 var c = url.searchParams.get("id");
 
+var firebaseConfig = {
+    apiKey: "AIzaSyD3c9raAeUHaUKQ9AgMSocycl5Kb3FEIxg",
+    authDomain: "justcare.firebaseapp.com",
+    databaseURL: "https://justcare.firebaseio.com",
+    projectId: "justcare",
+    storageBucket: "justcare.appspot.com",
+    messagingSenderId: "482000803486",
+    appId: "1:482000803486:web:6cd146b3233f53fdd04d8f"
+  };
+firebase.initializeApp(firebaseConfig);
+
+var currentUser;
+
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      currentUser = user;
+    }
+});
+
 
 var database;
 $(document).ready(() => {
     $("#submitButton").click(function (event) {
         let data = {
             [c]: {
-                id: "sample@email.com",
-                name: "foo bar",
+                id: "anon@noone.com",
+                name: "Anonymous",
                 rating: {
                     "Cultural Sensitivity": $("#c").html().match(/star active/g).length,
                     "Hospitality": $("#h").html().match(/star active/g).length,
@@ -17,6 +36,9 @@ $(document).ready(() => {
                 },
                 comment: $("input#comment").val()
             }
+        }
+        if (currentUser) {
+          data[c].id = currentUser.email;
         }
         postReview(data);
 
@@ -58,7 +80,7 @@ function loadData() {
       reviews.reduce((a,c)=>a+parseInt(c.rating[csname]), 0)/reviews.length : 0;
     let idName = '<div><font size= "30">' + '-' + id + '</font></div>';
     let cSensRating = '<span class="rating" data-default-rating="' + cSens + '" disabled></span>';
-    let comments = rating ? `"${reviews[reviews.length-1].comment}" -${reviews[reviews.length-1].name}` : "No one has rated this hospital yet";
+    let comments = rating ? `"${reviews[reviews.length-1].comment}" -${reviews[reviews.length-1].id}` : "No one has rated this hospital yet";
     let hosp = rating ?
       reviews.reduce((a,c)=>a+parseInt(c.rating[hospname]), 0)/reviews.length : 0;
     let qoc = rating ?
