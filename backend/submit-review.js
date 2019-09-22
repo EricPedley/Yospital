@@ -26,11 +26,11 @@ module.exports = (req, res) => {
                     });
                 }
                 else {
-                  rev[docKey] = data[docKey];
+                  let newRev = [rev[docKey], data[docKey]];
 
                   firestore.collection(collectionKey).doc(docKey)
                     .update({reviews: rev})
-                    .then((res) => {
+                    .then((res1) => {
                         res.send(`Document ${docKey} successfully written!`);
                     }).catch((error) => {
                         res.status(500).send("Error writing document: " + error);
