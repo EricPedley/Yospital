@@ -76,6 +76,7 @@ function loadData() {
   $(hospRating).appendTo("#hosp");
   $(average).appendTo("#average");
   $(idName).appendTo("id");
+  updateRatings();
 }
         // let hospital = database;
         // let id = hospital.id;
