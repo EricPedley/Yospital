@@ -5,31 +5,40 @@ body {
     padding: 0;
     background-image: url("/frontend/images/background.jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 1000%;
     /* animation: color 10s ease infinite; */
+}
+.beg{
+    padding: 5%;
+    font-size: 50px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+
 }
   
   .box {
-    width: 40%;
-    height: 200px;
-    background: orange;
+    width: 80%;
+    height: 300px;
+    background: rgb(255, 255, 255);
     border-radius: 2px;
     padding: 10px;
    text-align: center;
-  }
-  
-  .a {
-    margin: 120vh auto 0 auto;
-  }
-  
-  .b {
-    margin: 40vh auto 0 auto;
+   color: black;
   }
 h1{
-    font-size: 36px;
+    font-size: 75px;
     font-weight: bold;
     text-align: center;
 }
+.item {
+    width: 60%;
+    height: 500px;
+    margin: 500px auto;
+    padding-top: 10px;
+    background:white;
+    text-align: center;
+    color: black;
+    font-size: 3em;
+  }
 
 .intro{
     text-align: center;
@@ -59,3 +68,58 @@ h1{
         background: white;
     }    
 }
+[data-aos="rotate-c"] {
+    transform: rotate(-180deg);
+    transition-property: transform;
+  }
+  
+  [data-aos="rotate-c"].aos-animate {
+    transform: rotate(0deg);
+  }
+
+  .image{
+      background-image: url("/frontend/images/scroll.gif");
+      padding: 30px;
+      background-size: 100%;
+      height:100px;
+      width:100px;
+      text-align: center;
+  }
+  /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }

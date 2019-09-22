@@ -7,22 +7,105 @@
     <link rel="stylesheet" href="./css/hospitalTemplate.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <title>Reviews</title>
+    <script src="js/SimpleStarRating.js"></script>
+    <link rel="stylesheet" href="css/SimpleStarRating.css">
+    <title>Hospital</title>
 </head>
 <body>
-    <h1>Reviews</h1>
-    <p> 
-        This is the page where you find reviews
-        of doctors near you and to determine if they are fit 
-        for your expectations.
-    </p>
-    <div class="box a" data-aos="fade-up">
-            <h2>Animated using <code>fade-up</code>.</h2></div>
-            <div class="box b" data-aos="flip-down"><h2>Animated using <code>flip-down</code>.</h2></div>
 
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-        AOS.init();
+        AOS.init({
+ duration: 1200
+});
 </script>
+    <h1>Hospital</h1>
+    <p class = "beg"> 
+        This is the page where you find reviews
+        of the hospital near you and to determine if they are fit 
+        for your expectations.
+    </p>
+    <center><div class="image"></div></center>
+
+    <div class="item" data-aos="flip-left"
+    data-aos-easing="ease-out-cubic"
+    data-aos-duration="1000"><h2> Cultural Sensitivity
+        <p><span class="rating" data-default-rating="5" disabled></span><br>
+        <!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div></p>
+    </h2></div>
+    <div class="item" data-aos="fade-down" data-aos-easing="ease-out-cubic"
+    data-aos-duration="1000"><h2>Microaggression</h2>
+<p><span class="rating" data-default-rating="5" disabled></span></p></div>
+    <div class="item" data-aos="fade-right"data-aos-easing="ease-out-cubic"
+    data-aos-duration="1000"><h2>Hospitality</h2><p>
+            <span class="rating" data-default-rating="5" disabled></span>
+    </p></div>
+    <div class="item" data-aos="fade-left"data-aos-easing="ease-out-cubic"
+    data-aos-duration="1000"><h2>Knowledgeable</h2><p>
+            <span class="rating" data-default-rating="5" disabled></span>
+    </p></div>
+    
+    <div class="item" data-aos="zoom-in"data-aos-easing="ease-in-cubic"
+    data-aos-duration="1000"><h2>Listening</h2> <p>
+            <span class="rating" data-default-rating="5" disabled></span>
+    </p></div>
+
+
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+    <script>
+            var ratings = document.getElementsByClassName('rating');
+    
+            for (var i = 0; i < ratings.length; i++) {
+                var r = new SimpleStarRating(ratings[i]);
+    
+                ratings[i].addEventListener('rate', function (e) {
+                    console.log('Rating: ' + e.detail);
+                });
+            }
+        </script>
+
 </body>
 </html>
