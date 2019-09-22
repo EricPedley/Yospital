@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
@@ -34,23 +34,47 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="./css/landing.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200&display=swap" rel="stylesheet">
   </head>
   <body class="flex-column">
+    <script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.3'><\/script>".replace("HOST", location.hostname));
+//]]></script>
     <div class="landing-container d-flex h-100 p-3 mx-auto flex-column text-center" name="home">
   <header class="masthead mb-auto">
     <div class="inner">
-      <nav class="nav nav-masthead ml-auto fixed-top bg-dark">
-        <a class="nav-link active" href="#home">Home</a>
-        <a class="nav-link" href="search.html">Search</a>
-        <a class="nav-link" href="#story">Our story</a>
-        <a class="nav-link" href="#value">Our values</a>
-        <a class="nav-link mr-1" href="login.html">Login</a>
-        <a id="userDisplay"></a>
+      <nav class="navbar navbar-expand-lg nav nav-masthead ml-auto fixed-top bg-dark">
+        <a class="navbar-brand" href="#">justcare</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li>
+              <a class="nav-link active" href="#home">Home</a>
+            </li>
+            <li>
+              <a class="nav-link" href="search.html">Search</a>
+            </li>
+            <li>
+              <a class="nav-link" href="#story">Our   story</a>
+            </li>
+            <li>
+              <a class="nav-link" href="#value">Our values</a>
+            </li>
+            <li>
+              <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li>
+              <a class="nav-link" id="userDisplay"></a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </div>
   </header>
   <main role="main" class="inner cover">
-    <h1 class="cover-heading animated fadeIn">justcare</h1>
+    <h1 class="cover-heading animated fadeIn" id="logo">justcare</h1>
     <p class="lead animated fadeIn">justcare is a platform to connect the most vulnerable in our healthcare system to human-centered care.</p>
     <p class="lead animated fadeIn">
       <a href="search.html" class="btn btn-lg btn-secondary animated fadeIn">Search</a>
