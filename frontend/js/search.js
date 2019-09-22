@@ -2,6 +2,7 @@ var database;
 var counter;
 var firstTen = [];
 $(document).ready(() => {
+    doTesterStuff();
     counter = 0;
     $(window).bind('scroll', function () {
         if ($("#map").html() === '' && $(window).scrollTop() >= $('#bottom').offset().top + $('#bottom').outerHeight() - window.innerHeight) {
@@ -24,7 +25,7 @@ $(document).ready(() => {
                     //$('#map').html('<center><div class="mapouter"><div class="gmap_canvas"><iframe width="590" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q='+zipcode+'&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:590px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:590px;}</style></div></center>');
                     //$('#map').html('<div class="mapouter"><div class="gmap_canvas"><iframe width="590" height="500" id="gmap_canvas" src="https://www.google.com/maps/search/hospitals/@37.7734358,-122.4400006,13.35z" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:590px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:590px;}</style></div>');
                     $('#botheader').html('<font size=6>Hospitals Near You:</font>');
-                    
+
                 });
             } else {
                 alert("Please enter a zip code");
@@ -94,25 +95,24 @@ function loadData(first) {
     }
     $.post("http://localhost:3000/hospital-info", JSON.stringify(ids), function (data) {
         console.log(data);
-        JSON.parse(data).forEach((hospital,index) => {
+        JSON.parse(data).forEach((hospital, index) => {
             let name = hospital.name;
             let proximity = dists[index];
             let address = hospital.address;
             let reviews = hospital.reviews;
-            let cSens=0,hosp=0,qcare=0;
-            let total=0;
+            let cSens = 0, hosp = 0, qcare = 0;
+            let total = 0;
             reviews.forEach(review => {
-                let rating=review.rating;
+                let rating = review.rating;
                 cSens += rating["Cultural Sensitivity"];
                 hosp += rating["Hospitality"];
                 qcare += rating["Quality of Care"];
                 total++;
             });
-            cSens/=total;
-            hosp/=total;
-            qcare/=total;
-            console.log(cSens+"|"+hosp);
-            let id =hospital.id;
+            cSens /= total;
+            hosp /= total;
+            qcare /= total;
+            let id = hospital.id;
             let gmaps = "https://www.google.com/maps/place/" + address.replace(/\s/g, "+");
             let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5"><a href="hospitalTemplate.html?id=' + id + '">' + name + '</a></font></center><div class="col-md-3"><font size="4">Distance: ' + Math.round(proximity * 10) / 10 + ' Miles</font></div>' + '<div class="col-md-12"><center><a href ="' + gmaps + '">' + address + '</a></center></div>' + '<font size="4"><div class="col-md-3">Overall: <br><span class="rating" data-default-rating="' + (hosp + cSens) / 2 + '" disabled></span></div><div class="col-md-3">Hospitality: <br><span class="rating" data-default-rating="' + hosp + '" disabled></span></div><div class="col-md-3">Cultural Sensitivity: <br><span class="rating" data-default-rating="' + cSens + '" disabled></span></div><div class="col-md-3">Quality of Care: <br><span class="rating" data-default-rating="' + qcare + '" disabled></span></div></font></div>';
             $(element).appendTo("#summaries");
@@ -133,3 +133,31 @@ updateRatings = () => {
         }
     }
 };
+
+
+
+
+function doTesterStuff() {
+    $("#tester").keypress(function (event) {
+        if (event.keyCode === 13) {
+            $.post(
+                "http://localhost:3000/submit-review.js",
+                JSON.stringify({
+                    "0000000004": {
+                        "id": "me@example.com",
+                        "name": "Jane Doe",
+                        "rating": {
+                            // The following are all numbers from 1 to 5
+                            "Cultural Sensitivity": Math.random() * 5,
+                            "Hospitality": Math.random() * 5,
+                            "Quality of Care": Math.random() * 5
+                        },
+                        "comment": "This was alright."
+                    }
+                }),function(data) {
+                    console.log("response:"+data);
+                }
+                );
+        }
+    });
+}
