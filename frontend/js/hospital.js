@@ -1,23 +1,3 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyD3c9raAeUHaUKQ9AgMSocycl5Kb3FEIxg",
-    authDomain: "justcare.firebaseapp.com",
-    databaseURL: "https://justcare.firebaseio.com",
-    projectId: "justcare",
-    storageBucket: "justcare.appspot.com",
-    messagingSenderId: "482000803486",
-    appId: "1:482000803486:web:6cd146b3233f53fdd04d8f"
-  };
-firebase.initializeApp(firebaseConfig);
-var email;
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        email=user.email;
-    }
-    else {
-        console.log('not logged in');
-    }
-});
-
 var urlparameter = window.location.href;
 var url = new URL(urlparameter);
 var c = url.searchParams.get("id");
@@ -28,7 +8,7 @@ $(document).ready(() => {
     $("#submitButton").click(function(event) {
         let data = {
             [c]:{
-                id:email,
+                id: "sample@email.com",
                 name:"foo bar",
                 rating: {
                     "Cultural Sensitivity":$("#c").html().match(/star active/g).length,
