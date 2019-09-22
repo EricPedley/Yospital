@@ -38,21 +38,21 @@ $(document).ready(() => {
 function loadData() {
 
     let hospital = database[c];
-    console.log(hospital);
     let name = hospital.name;
     let address = hospital.address;
   let lat = hospital.lat;
   let long = hospital.long;
   let website = hospital.website
   let reviews = hospital.reviews;
+  let id = c;
   if (!Array.isArray(reviews))
     reviews = Object.values(reviews);
-  let rating = hospital.reviews[c].rating;
+  let rating = reviews[0].rating;
   let ratingView = '<div class="col-md-3"><font size="4">' + rating + '</font></div>';
   let cSens = rating["Cultural Sensitivity"];
   let idName = '<div><font size= "30">' + '-' + id + '</font></div>';
   let cSensRating = '<span class="rating" data-default-rating="' + cSens + '" disabled></span>';
-  let comments = hospital.reviews[c].comment;
+  let comments = reviews[0].comment;
   let hosp = rating["Hospitality"];
   let hospRating = '<span class="rating" data-default-rating="' + hosp + '" disabled></span>';
   let average = '<span class="rating" data-default-rating="' + (hosp + cSens) / 2 + '" disabled></span>';
