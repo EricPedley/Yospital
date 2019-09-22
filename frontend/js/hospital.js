@@ -159,4 +159,5 @@ function postReview(review) {
             console.log("response:" + data);
         }
     );
+    alert("Review Posted");
 }
