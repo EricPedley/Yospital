@@ -9,7 +9,7 @@ var app = express()
 console.log("Reading hospitals.json into memory...");
 const hospitals = JSON.parse(fs.readFileSync('../hospitals.json'));
 
-app.use(express.json());
+app.use(express.json({type:"*/*"}));
 app.use(cors());
 
 app.get('/', (req,res) => {
@@ -72,7 +72,7 @@ app.post('/hospital-list', (req,res) => {
         });
       });
     else
-      res.status(400).send("Bad request! You must send latitude and longitude.");
+      res.status(400).send("Bad request! You must send latitude and longitude, or your ZIP code.");
 });
 
 const getHospitalData = (lat, long) => {
