@@ -5,8 +5,8 @@ $(document).ready(() => {
     doTesterStuff();
     counter = 0;
     $(window).bind('scroll', function () {
-        if ($("#map").html() === '' && $(window).scrollTop() >= $('#bottom').offset().top + $('#bottom').outerHeight() - window.innerHeight) {
-            loadData();
+        if ($("#map").html() !== '' && $(window).scrollTop() >= $('#bottom').offset().top + $('#bottom').outerHeight() - window.innerHeight) {
+            loadData(false);
             updateRatings();
         }
     });
