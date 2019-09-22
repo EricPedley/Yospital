@@ -61,6 +61,9 @@ function loadData() {
   let QOC = '<span class="rating" data-default-rating="' + qoc + '" disabled></span>';
   let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5">' + id + '</a></font></center><div class="col-md-3"><font size="4">Distance: ' + lat + long + ' Miles</font></div>' + '<div class="col-md-12"><center><a href ="' + rating + '">' + website + '</a></center></div>' + '<font size="4"><div class="col-md-3">Overall: <br><span class="rating" data-default-rating="' + (hosp + cSens) / 2 + '" disabled></span></div><div class="col-md-3">Hospitality: <br><span class="rating" data-default-rating="' + hosp + '" disabled></span></div><div class="col-md-3">Cultural Sensitivity: <br><span class="rating" data-default-rating="' + cSens + '" disabled></span></div><div class="col-md-3">Quality of Care: <br><span class="rating" data-default-rating="' + hosp + '" disabled></span></div></font></div>';
   let comment = '<div><font size= "50">' + comments + '</font></div>';
+  if(comments===undefined) {
+      comment="";
+  }
   console.log(nameTitle);
   console.log(hospRating);
   console.log(cSensRating);
