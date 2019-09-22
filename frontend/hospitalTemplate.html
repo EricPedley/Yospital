@@ -26,110 +26,46 @@
 });
 </script>
     <h1 class = "h1" id="nameTitle"></h1>
-    <div class = "beg" id = "comment"> 
+    <div class = "beg" id = "comment">
     </div>
     <div id = "iD"></div>
 
     <center><div class="image"></div></center>
 
-      
+
     <div class="item" data-aos="zoom-in"data-aos-easing="ease-in-cubic"
-    data-aos-duration="1000"><h2>Average Rating<p></p><div id= "average">
-            
-    <!-- </div><br>
-    <br>
-    <button onclick="document.getElementById('id01').style.display='block'"
-    >Read More</button>
-    
-    The Modal
-    <div id="id01" class="w3-modal">
-      <div class="w3-modal-content">
-        <div class="w3-container">
-          <span onclick="document.getElementById('id01').style.display='none'"
-          class="w3-button w3-display-topright">&times;</span>
-          <p>Some text in the Modal..</p>
-          <p>Some text in the Modal..</p>
-        </div>
-      </div>
-    </div> -->
+    data-aos-duration="1000"><h2>Average Rating</h2><p></p><div id= "average">
   </div>
 
 
     <div class="item" data-aos="flip-left"
     data-aos-easing="ease-out-cubic"
-    data-aos-duration="1000"><h2> Cultural Sensitivity
-        <p><div id = "cSen"></div>
-        <!-- //<br> -->
-        <!-- Trigger/Open The Modal<br>
+    data-aos-duration="1000">
+      <h2> Cultural Sensitivity</h2>
+      <p><div id = "cSen"></div>
+    </div>
 
-        <button onclick="document.getElementById('id02').style.display='block'"
-        >Read More</button>
-        
-       The Modal 
-        <div id="id02" class="w3-modal">
-          <div class="w3-modal-content">
-            <div class="w3-conainer">
-              <span onclick="document.getElementById('id02').style.display='none'"
-              class="w3-button w3-display-topright">&times;</span>
-              <p class= "comment"></p>
-              <p>Some text in the Modal..</p>
-            </div>
-          </div>
-        </div> -->
-      </div>
-
-
-    
     <div class="item" data-aos="fade-right"data-aos-easing="ease-out-cubic"
-    data-aos-duration="1000"><h2>Hospitality<p>
-        <p><div id = "hosp"></div>
-          <!-- <br>
-      <br>
-      <button onclick="document.getElementById('id03').style.display='block'"
-      >Read More</button>
-      
-      The Modal 
-      <div id="id03" class="w3-modal">
-        <div class="w3-modal-content">
-          <div class="w3-container">
-            <span onclick="document.getElementById('id03').style.display='none'"
-            class="w3-button w3-display-topright">&times;</span>
-            <p><div class = "comment"></div></p>
-          </div>
-        </div>
-      </div>
-    </div></div> -->
-  </div>
+    data-aos-duration="1000">
+      <h2>Hospitality</h2>
+      <div id="hosp"></div>
+    </div>
 
     <div class="item" data-aos="fade-left"data-aos-easing="ease-out-cubic"
-    data-aos-duration="1000"><h2>Quality of Care<p>
-            <div id="qoc">
-            </div>
-            <!-- <br>
-            <button onclick="document.getElementById('id04').style.display='block'"
-            >Read More</button>
-            
-            The Modal 
-            <div id="id04" class="w3-modal">
-              <div class="w3-modal-content">
-                <div class="w3-container">
-                  <span onclick="document.getElementById('id04').style.display='none'"
-                  class="w3-button w3-display-topright">&times;</span>
-                  <div class ="review"></div>
-                </div>
-              </div>
-            </div>
-    </p></div> -->
-  </div>
+    data-aos-duration="1000"><h2>Quality of Care</h2>
+      <div id="qoc"></div>
+    </div>
 
-  <div class="item" data-aos="fade-left"data-aos-easing="ease-out-cubic"
-  data-aos-duration="1000" style = "height:500px;"><h2>Review<br>
-          <label>Cultural Sensitivity:<span id = 'c'class='rating'></span></label><br>
-          <label>Hospitality:<span id='h' class='rating'></span></label><br>
-          <label>Quality of Care:<span id='q' class='rating'></span></label><br>
-          <label>Comments:<input type ="text" id="comment"></input></label><br>
-          <input type ="button" value="Submit" id ="submitButton"></input>
-  </div>       
+    <div class="item" data-aos="fade-left"data-aos-easing="ease-out-cubic"
+    data-aos-duration="1000" style = "height:500px;">
+      <h2>Review</h2>
+      <br>
+      <label>Cultural Sensitivity:<span id = 'c'class='rating'></span></label><br>
+      <label>Hospitality:<span id='h' class='rating'></span></label><br>
+      <label>Quality of Care:<span id='q' class='rating'></span></label><br>
+      <label>Comments:<input type ="text" id="comment"></input></label><br>
+      <input type ="button" value="Submit" id ="submitButton"></input>
+    </div>
 
 
 </div>
@@ -144,7 +80,7 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
+// When the user clicks the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
 }
@@ -169,7 +105,7 @@ var btn1 = document.getElementById("myBtn1");
 // Get the <span> element that closes the modal
 var span1 = document.getElementsByClassName("close1")[0];
 
-// When the user clicks the button, open the modal 
+// When the user clicks the button, open the modal
 btn1.onclick = function() {
   modal1.style.display = "block";
 }
@@ -192,7 +128,7 @@ window.onclick = function(event) {
             var rateVals=[0,0,0];
             for (var i = 0; i < ratings.length; i++) {
                 var r = new SimpleStarRating(ratings[i]);
-    
+
                 ratings[i].addEventListener('rate', function (e) {
                     console.log(this.value=e.detail);
                 });

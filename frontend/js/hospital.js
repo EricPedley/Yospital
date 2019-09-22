@@ -47,17 +47,17 @@ function loadData() {
   let id = c;
   if (!Array.isArray(reviews))
     reviews = Object.values(reviews);
-  let rating = reviews[0].rating;
+  let rating = reviews[0] ? reviews[0].rating : undefined;
   let ratingView = '<div class="col-md-3"><font size="4">' + rating + '</font></div>';
-  let cSens = rating["Cultural Sensitivity"];
+  let cSens = reviews[0] ? rating["Cultural Sensitivity"] : 0;
   let idName = '<div><font size= "30">' + '-' + id + '</font></div>';
   let cSensRating = '<span class="rating" data-default-rating="' + cSens + '" disabled></span>';
-  let comments = reviews[0].comment;
-  let hosp = rating["Hospitality"];
+  let comments = reviews[0] ? reviews[0].comment : "No reviews yet";
+  let hosp = reviews[0] ? rating["Hospitality"] : 0;
   let hospRating = '<span class="rating" data-default-rating="' + hosp + '" disabled></span>';
   let average = '<span class="rating" data-default-rating="' + (hosp + cSens) / 2 + '" disabled></span>';
   let nameTitle = '<center><font size="175px" color = "#FF553D">'+ name + '</font></center>';
-  let qoc = rating["Quality of Care"]
+  let qoc = reviews[0] ? rating["Quality of Care"]: 0;
   let QOC = '<span class="rating" data-default-rating="' + qoc + '" disabled></span>';
   let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5">' + id + '</a></font></center><div class="col-md-3"><font size="4">Distance: ' + lat + long + ' Miles</font></div>' + '<div class="col-md-12"><center><a href ="' + rating + '">' + website + '</a></center></div>' + '<font size="4"><div class="col-md-3">Overall: <br><span class="rating" data-default-rating="' + (hosp + cSens) / 2 + '" disabled></span></div><div class="col-md-3">Hospitality: <br><span class="rating" data-default-rating="' + hosp + '" disabled></span></div><div class="col-md-3">Cultural Sensitivity: <br><span class="rating" data-default-rating="' + cSens + '" disabled></span></div><div class="col-md-3">Quality of Care: <br><span class="rating" data-default-rating="' + hosp + '" disabled></span></div></font></div>';
   let comment = '<div><font size= "50">' + comments + '</font></div>';
