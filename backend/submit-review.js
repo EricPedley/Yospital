@@ -12,6 +12,7 @@ module.exports = (req, res) => {
         Object.keys(data).forEach(docKey => {
             firestore.collection(collectionKey).doc(docKey).set({"reviews":data},{merge:true}).then((res) => {
                 console.log("Document " + docKey + " successfully written!");
+
             }).catch((error) => {
                 console.error("Error writing document: ", error);
             });
