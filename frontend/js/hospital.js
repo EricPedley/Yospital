@@ -58,7 +58,7 @@ function loadData() {
       reviews.reduce((a,c)=>a+parseInt(c.rating[csname]), 0)/reviews.length : 0;
     let idName = '<div><font size= "30">' + '-' + id + '</font></div>';
     let cSensRating = '<span class="rating" data-default-rating="' + cSens + '" disabled></span>';
-    let comments = rating ? reviews[0].comment : "No one has rated this hospital yet";
+    let comments = rating ? `"${reviews[reviews.length-1].comment}" -${reviews[reviews.length-1].name}` : "No one has rated this hospital yet";
     let hosp = rating ?
       reviews.reduce((a,c)=>a+parseInt(c.rating[hospname]), 0)/reviews.length : 0;
     let qoc = rating ?
