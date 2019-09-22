@@ -1,9 +1,6 @@
-module.exports = (req, res) => {
-    var admin = require("firebase-admin");
+const firestore = require('./firestore')
 
-    var serviceAccount = require("./secretkey.json");
-    console.log("doing stuff");
-    const firestore = admin.firestore();
+module.exports = (req, res) => {
     const settings = { timestampsInSnapshots: true };
     firestore.settings(settings);
     let data = req.body;
