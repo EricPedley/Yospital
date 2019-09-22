@@ -1,5 +1,8 @@
 const https = require('https');
 const distance = require('./distancecalc');
+const fs = require('fs');
+
+const hospitals = JSON.parse(fs.readFileSync('../hospitals.json'));
 
 module.exports = (req,res) => {
   var data = req.body;
@@ -27,6 +30,7 @@ module.exports = (req,res) => {
             res.send(JSON.stringify(getHospitalData(lat, long)));
           } catch (err) {
             res.status(500).send("Google Maps API sent bad response");
+            console.error(err);
           }
         });
       });
