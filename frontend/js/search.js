@@ -7,17 +7,20 @@ $(document).ready(() => {
             if (zipcode.match(/(^\d{5}$)|(^\d{5}-\d{4}$)/)) {//if input is a 5 digit number(zip code format)
                 let apidata = makeAPIRequest(zipcode, 20);
                 console.log(apidata);
-                apidata.hospitals.forEach((hospital => {
+                apidata.hospitals.forEach((hospital,index) => {
                     let id = hospital.id;
                     let name = hospital.name;
                     let proximity = hospital.proximity;
                     let rating = hospital.rating;
                     let cSens = rating["Cultural Sensitivity"];
                     let hosp = rating["Hospitality"];
-                    let element = "<div class='container'><div class = 'col-md-9'>"+name+"</div><div class = 'col-md-3'>"+proximity+"</div><div class = 'col-md-12'>Hospitality: "+hosp+" Cultural Sensitivity: "+cSens+"</div></div>";
+                    let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5">'+name+'</font></center><div class="col-md-3"><font size="4">Distance: '+proximity+' Miles</font></div><font size="4"><div class="col-md-4">Overall: <span class="rating" data-default-rating="'+(hosp+cSens)/2+'" disabled></span></div><div class="col-md-4">Hospitality: <span class="rating" data-default-rating="'+hosp+'" disabled></span></div><div class="col-md-4">Cultural Sensitivity: <span class="rating" data-default-rating="'+cSens+'" disabled></span></div></font></div>';
                     $(element).appendTo("#summaries");
-                }));
+                    
+                });
                 $('#zip').html('');
+                $('#botheader').html('<font size=6>Hospitals Near You:</font>');
+                updateRatings();
             } else {
                 $('<center id = "ziperror">Please enter a zip code</center>').appendTo('#zipinputdiv');
             }
@@ -27,6 +30,18 @@ $(document).ready(() => {
 
 function makeAPIRequest(zipcode, radius) {
     console.log("Entered " + zipcode);
-    let response = '{"hospitals":[{"name":"h1","rating":{"Cultural Sensitivity":4.2,"Hospitality":1.3},"proximity":0.5},{"name":"h2","rating":{"Cultural Sensitivity":2.6,"Hospitality":3.3},"proximity":1.9}]}'
+    let response = '{"hospitals":[{"name":"Example General Hospital","rating":{"Cultural Sensitivity":4.2,"Hospitality":1.3},"proximity":0.5},{"name":"Sample Text Hospital","rating":{"Cultural Sensitivity":2.6,"Hospitality":3.3},"proximity":1.9}]}'
     return JSON.parse(response);
 }
+
+updateRatings = ()=>{
+    var ratings = document.getElementsByClassName('rating');
+
+        for (var i = 0; i < ratings.length; i++) {
+            var r = new SimpleStarRating(ratings[i]);
+
+            ratings[i].addEventListener('rate', function (e) {
+                console.log('Rating: ' + e.detail);
+            });
+        }
+};
