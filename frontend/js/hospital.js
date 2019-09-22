@@ -1,6 +1,6 @@
 
-    var urlparameter = defaultvalue;
-    urlparameter = window.location.href.substring(window.location.href.indexOf('?'))
+
+    var urlparameter = window.location.href.substring(window.location.href.indexOf('?')+4);
     console.log(urlparameter);
     
 $(document).ready(() => {
