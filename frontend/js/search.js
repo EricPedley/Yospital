@@ -115,7 +115,16 @@ function loadData(first) {
                   hosp += rating["Hospitality"];
                   qcare += rating["Quality of Care"];
                   total++;
-              });
+              })
+            else {
+              Object.values(reviews).forEach(review => {
+                  let rating = review.rating;
+                  cSens += rating["Cultural Sensitivity"];
+                  hosp += rating["Hospitality"];
+                  qcare += rating["Quality of Care"];
+                  total++;
+              })
+            }
             if (total > 0) {
                 cSens /= total;
                 hosp /= total;
