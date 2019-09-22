@@ -8,9 +8,12 @@
     <title>justcare</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/cover/">
-
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-auth.js"></script>
+    <script src="./js/landing.js"></script>
     <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="css/mdb.css">
 
 
     <style>
@@ -41,40 +44,42 @@
         <a class="nav-link" href="search.html">Search</a>
         <a class="nav-link" href="#story">Our story</a>
         <a class="nav-link" href="#value">Our values</a>
+        <a class="nav-link mr-1" href="login.html">Login</a>
+        <a id="userDisplay"></a>
       </nav>
     </div>
   </header>
   <main role="main" class="inner cover">
-    <h1 class="cover-heading">justcare</h1>
-    <p class="lead">justcare is a platform to connect the most vulnerable in our healthcare system to human-centered care.</p>
-    <p class="lead">
-      <a href="search.html" class="btn btn-lg btn-secondary">Search</a>
+    <h1 class="cover-heading animated fadeIn">justcare</h1>
+    <p class="lead animated fadeIn">justcare is a platform to connect the most vulnerable in our healthcare system to human-centered care.</p>
+    <p class="lead animated fadeIn">
+      <a href="search.html" class="btn btn-lg btn-secondary animated fadeIn">Search</a>
     </p>
   </main>
   <footer class="mastfoot mt-auto"></footer>
     </div>
 
     <div class="info-container d-flex w-100 h-100 mx-auto mt-auto mb-5 flex-column" id="story" name="story">
-        <h1 class="cover-heading text-center mb-5">
-            Our Story
+        <h1 class="cover-heading text-center mb-5 animated fadeInUp">
+            Our story
         </h1>
         <div class="row">
-            <div class="col-5 h-100 ">
+            <div class="col-5 h-100 animated fadeInUp">
                 <h1>
                     It's time for healthcare that cares.
                 </h1>
             </div>
-            <div class="col-6 h-100">
+            <div class="col-6 h-100 animated fadeInUp">
                 <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    People of color everywhere deserve better healthcare. People of color are being pushed out of a system that misdiagnoses, dismisses, and sidelines them. justcare fills this gap, by connecting patients to healthcare providers at proven hospitals. We keep hospitals accountable through our rating system that specifically targets obstacles people of color face in the healthcare process. In the future that justcare envisions, it doesn't exist. Search. Evaluate. Just care.
                 </p>
             </div>
         </div>
     </div>
 
     <div class="info-container d-flex w-100 h-100 p-3 mx-auto flex-column mt-auto" >
-    <h1 class="mx-auto mt-auto cover-heading" name="value">What we value</h1>
-    <div class="row mx-auto mt-5 mb-auto ">
+    <h1 class="mx-auto mt-auto cover-heading animated fadeInUp" name="value">Our values</h1>
+    <div class="row mx-auto mt-5 mb-auto animated fadeInUp">
         <div class="col px-md-5">
         <div class="col-lg ml-5">
                 <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
@@ -116,4 +121,5 @@
             </div>
         </footer>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </body></html>

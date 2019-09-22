@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="./css/signin.css" rel="stylesheet">
+  <link href="./css/landing.css" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-auth.js"></script>
+  <script src="./js/login.js"></script>
+</head>
+
+<body class="text-center ">
+    <nav class="nav nav-masthead ml-auto fixed-top bg-dark">
+        <a class="nav-link" href="./landing.html">Back</a>
+    </nav>
+
+    <form class="form-signin" id="signInForm">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">Your account has been created. Please sign in. </div>
+        <h1 class="h3 mb-3 font-weight-normal cover-heading">Please log in</h1>
+        <label for="inputEmail" class="sr-only" >Email address</label>
+        <input type="email" id="inputEmail"  class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only" >Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="button" onClick="signIn()">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="button" onClick="createAccount()" >Sign up</button>
+    </form>
+            
+  
+
+  <!-- Add Firebase products that you want to use -->
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</body>
+
+</html>
