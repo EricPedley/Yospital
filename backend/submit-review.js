@@ -29,7 +29,7 @@ module.exports = (req, res) => {
                   let newRev = [rev[docKey], data[docKey]];
 
                   firestore.collection(collectionKey).doc(docKey)
-                    .update({reviews: rev})
+                    .update({reviews: newRev})
                     .then((res1) => {
                         res.send(`Document ${docKey} successfully written!`);
                     }).catch((error) => {
