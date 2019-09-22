@@ -21,9 +21,6 @@ $(document).ready(() => {
                     console.log("starting foreach");
                     loadData(true);
                     $('#zip').html('');
-                    //addMap(zipcode);
-                    //$('#map').html('<center><div class="mapouter"><div class="gmap_canvas"><iframe width="590" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q='+zipcode+'&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:590px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:590px;}</style></div></center>');
-                    //$('#map').html('<div class="mapouter"><div class="gmap_canvas"><iframe width="590" height="500" id="gmap_canvas" src="https://www.google.com/maps/search/hospitals/@37.7734358,-122.4400006,13.35z" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:590px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:590px;}</style></div>');
                     $('#botheader').html('<font size=6>Hospitals Near You:</font>');
 
                 });
