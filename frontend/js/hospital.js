@@ -8,18 +8,20 @@ var c = url.searchParams.get("id");
 var database;
 $(document).ready(() => {
     $("#submitButton").click(function(event) {
-        // let data = {
-        //     c:{
-        //         id:"sample@example.com",
-        //         name:"foo bar",
-        //         rating: {
-        //             "Cultural Sensitivity":document.getElementById("c").data-rating,
-        //             "Hospitality":$("#h").data-rating,
-        //             "Quality of Care":$("#q").data-rating
-        //         }
-        //     }
-        // }
-        console.log(document.getElementById("c").innerHTML);//.substring(document.getElementById("c").innerHTML.indexOf("data-rating")));
+        let data = {
+            [c]:{
+                id:"sample@example.com",
+                name:"foo bar",
+                rating: {
+                    "Cultural Sensitivity":$("#c").html().match(/star active/g).length,
+                    "Hospitality":$("#h").html().match(/star active/g).length,
+                    "Quality of Care":$("#q").html().match(/star active/g).length
+                },
+                comments:$("#comment").val()
+            }
+        }
+        console.log(data);
+        //console.log($("#c").html().match(/star active/g).length);//.substring(document.getElementById("c").innerHTML.indexOf("data-rating")));
     });
     makeAPIPost(c, function (apidata) {
         console.log(apidata);
@@ -27,7 +29,7 @@ $(document).ready(() => {
         loadData();
         $('#zip').html('');
         $('#botheader').html('<font size=6>Hospitals Near You:</font>');
-        updateRatings();
+        //updateRatings();
     });
 
         
