@@ -12,7 +12,8 @@ firebase.initializeApp(firebaseConfig);
 function createAccount() {
     var email = document.getElementById('inputEmail').value;
     var password = document.getElementById('inputPassword').value;
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(()=> {$('.alert').show();
+    document.getElementById("signInForm").reset();}).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         if (errorCode == "auth/weak-password") {
@@ -22,8 +23,7 @@ function createAccount() {
             alert(errorMessage);
         }
     });
-    $('.alert').show();
-    document.getElementById("signInForm").reset();
+    
 }
 
 function signIn() {
