@@ -2,7 +2,7 @@
 
     var urlparameter = window.location.href.substring(window.location.href.indexOf('?')+4);
     console.log(urlparameter);
-    
+
 $(document).ready(() => {
     let input = '<input type = text id="zipinput"></input>';
     $("#zipinputdiv").html(input);
@@ -19,9 +19,16 @@ $(document).ready(() => {
                     let proximity = hospital.proximity;
                     let rating = hospital.rating;
                     let cSens = rating["Cultural Sensitivity"];
+                    let cSensRating = '<span class="rating" data-default-rating="'+cSens+'" disabled></span></div></font></div>';
                     let hosp = rating["Hospitality"];
+                    let hospRating = '<div class="col-md-4">Hospitality: <span class="rating" data-default-rating="'+hosp+'" disabled></span></div>';
+                    let average = '<span class="rating" data-default-rating="'+(hosp+cSens)/2+'" disabled></span>';
                     let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5">'+name+'</font></center><div class="col-md-3"><font size="4">Distance: '+proximity+' Miles</font></div><font size="4"><div class="col-md-4">Overall: <span class="rating" data-default-rating="'+(hosp+cSens)/2+'" disabled></span></div><div class="col-md-4">Hospitality: <span class="rating" data-default-rating="'+hosp+'" disabled></span></div><div class="col-md-4">Cultural Sensitivity: <span class="rating" data-default-rating="'+cSens+'" disabled></span></div></font></div>';
                     $(element).appendTo("#summaries");
+                    $(average).appendTo("#average");
+                    $(cSensRating).appendTo("#cSens");
+                    $(hospRating).appendTo("#hosp");
+                    
                     
                 });
                 $('#zip').html('');
