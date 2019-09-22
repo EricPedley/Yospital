@@ -32,10 +32,11 @@ input {
 
 .summary {
     margin-bottom: 50px;
+    background-color: #9EB3B9;
 }
 
 font {
-    color: #9EB3B9;
+    color: #FDF7ED;
 }
 
 .rating {
@@ -78,4 +79,8 @@ nav a:hover {
 .nav-masthead .active {
   color: #9eb3b9;
   border-bottom-color: #9eb3b9;
+}
+
+.leftheader {
+    color: #000;
 }

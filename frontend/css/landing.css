@@ -124,6 +124,7 @@ body {
 #story {
   box-sizing: border-box;
   background-color: #fdf7ed;
+  text-shadow: none;
   padding-top: 15rem;
   padding-left: 5rem;
   padding-right: 5rem;

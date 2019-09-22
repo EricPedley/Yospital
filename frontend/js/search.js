@@ -174,7 +174,7 @@ function postReview(hospitalID, review) {
     $.post(
         "http://localhost:3000/submit-review",
         JSON.stringify({
-            hospitalID: review
+            [hospitalID]: review
         }), function (data) {
             console.log("response:" + data);
         }
