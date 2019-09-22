@@ -7,7 +7,7 @@ $(document).ready(() => {
             if (zipcode.match(/(^\d{5}$)|(^\d{5}-\d{4}$)/)) {//if input is a 5 digit number(zip code format)
                 let apidata = makeAPIRequest(zipcode, 20);
                 console.log(apidata);
-                apidata.hospitals.forEach((hospital,index) => {
+                apidata.forEach((hospital,index) => {
                     let id = hospital.id;
                     let name = hospital.name;
                     let address=hospital.address;
@@ -32,8 +32,11 @@ $(document).ready(() => {
 
 function makeAPIRequest(zipcode, radius) {
     console.log("Entered " + zipcode);
-    let response = '{"hospitals":[{"name":"Example General Hospital","rating":{"Cultural Sensitivity":4.2,"Hospitality":1.3},"proximity":0.5},{"name":"Sample Text Hospital","rating":{"Cultural Sensitivity":2.6,"Hospitality":3.3},"proximity":1.9}]}'
-    return JSON.parse(response);
+    let response = '[{"name":"Example General Hospital","rating":{"Cultural Sensitivity":4.2,"Hospitality":1.3},"proximity":0.5},{"name":"Sample Text Hospital","rating":{"Cultural Sensitivity":2.6,"Hospitality":3.3},"proximity":1.9}]'
+    $.post("http://localhost:3000/hospital-list",{"long":-122.419416,"lat":37.774929},function(data) {
+        console.log(data);
+        return JSON.parse(data);
+    });
 }
 
 updateRatings = ()=>{

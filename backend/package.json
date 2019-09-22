@@ -14,7 +14,7 @@
   "contributors": [
     "Eric Pedley",
     "Alex Peng <alexander.j.peng@gmail.com>",
-    "Andrew Vuong",
+    "Andrew Vuong <anvuong3@s.sfusd.edu>",
     "Alex Ruiz <ruiz.alex0302@gmail.com>"
   ],
   "license": "MIT",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/EricPedley/justcare#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   }
 }
