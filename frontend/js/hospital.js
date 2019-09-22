@@ -19,18 +19,18 @@ $(document).ready(() => {
             }
         }
         postReview(data);
-        
+
         //console.log($("#c").html().match(/star active/g).length);//.substring(document.getElementById("c").innerHTML.indexOf("data-rating")));
     });
     makeAPIPost(c, function (apidata) {
         loadData();
     });
 
-        
+
     });
     function makeAPIPost(x, callback) {
         $.post("https://justcare.ruizalex.com/hospital-info", JSON.stringify({ id: x }), function (data) {
-            
+
             database = JSON.parse(data);
             callback(database);
         });
@@ -44,6 +44,8 @@ function loadData() {
   let long = hospital.long;
   let website = hospital.website
   let reviews = hospital.reviews;
+  if (!Array.isArray(reviews))
+    reviews = Object.values(reviews);
   let rating = hospital.reviews[0].rating;
   let ratingView = '<div class="col-md-3"><font size="4">' + rating + '</font></div>';
   let cSens = rating["Cultural Sensitivity"];
@@ -92,7 +94,7 @@ function loadData() {
         // $(cSensRating).appendTo("#cSens");
         // $(hospRating).appendTo("#hosp");
         // $(nameTitle).appendTo('#name');
-    
+
 
 // $(document).ready(() => {
 //     let input = '<input type = text id="zipinput"></input>';
@@ -121,8 +123,8 @@ function loadData() {
 //                     $(cSensRating).appendTo("#cSens");
 //                     $(hospRating).appendTo("#hosp");
 //                     $(nameTitle).appendTo('#name');
-                    
-                    
+
+
 //                 });
 //                 $('#zip').html('');
 //                 $('#botheader').html('<font size=6>Hospitals Near You:</font>');
