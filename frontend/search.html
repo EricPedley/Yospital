@@ -22,16 +22,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         #map {
-            background-color:#9EB3B9;
-            color:#FDF7ED;
-            width:500px;
-            height:500px;
+            background-color: #9EB3B9;
+            color: #FDF7ED;
+            width: 500px;
+            height: 500px;
         }
+
         #zipinput {
-            color:#152E4D;
+            color: #152E4D;
         }
+
         body {
-            background-color:#152E4D;
+            background-color: #152E4D;
         }
 
         .border {
@@ -51,17 +53,28 @@
             margin-bottom: 50px;
         }
 
-        font{
-            color:#9EB3B9;
+        font {
+            color: #9EB3B9;
         }
 
         .rating {
-            font-size:20px;
+            font-size: 20px;
         }
     </style>
 </head>
 
 <body>
+    <input type="text" id = "tester"></input>
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <nav class="nav nav-masthead ml-auto fixed-top bg-dark">
+                <a class="nav-link active" href="landing.html/#home">Home</a>
+                <a class="nav-link" href="">Search</a>
+                <a class="nav-link" href="landing.html/#story">Our story</a>
+                <a class="nav-link" href="landing.html/#value">Our values</a>
+            </nav>
+        </div>
+    </header>
     <div id="top" class="container">
         <div id="attributes" class="col-md-4 border">
             <font size="7">
@@ -86,16 +99,16 @@
         </div>
         <div id="map" class="col-md-8 border">
             <center id="zip">
-                Enter your zip code:<div id="zipinputdiv" ></div>
+                Enter your zip code:<div id="zipinputdiv"></div>
             </center>
             <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWPDBtuM_FeyGfD58O3LTNzyx_z7TeREI&callback=initMap">
-    </script>
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWPDBtuM_FeyGfD58O3LTNzyx_z7TeREI&callback=initMap">
+                </script>
         </div>
     </div>
     <div id="bottom" class="container">
         <center id="botheader" class="row">
-            
+
         </center>
         <div id="summaries">
 
