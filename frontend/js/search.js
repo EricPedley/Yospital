@@ -33,7 +33,10 @@ $(document).ready(() => {
 function makeAPIRequest(zipcode, radius) {
     console.log("Entered " + zipcode);
     let response = '[{"name":"Example General Hospital","rating":{"Cultural Sensitivity":4.2,"Hospitality":1.3},"proximity":0.5},{"name":"Sample Text Hospital","rating":{"Cultural Sensitivity":2.6,"Hospitality":3.3},"proximity":1.9}]'
-    return JSON.parse(response);
+    $.post("http://localhost:3000/hospital-list",{"long":-122.419416,"lat":37.774929},function(data) {
+        console.log(data);
+        return JSON.parse(data);
+    });
 }
 
 updateRatings = ()=>{
