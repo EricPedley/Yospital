@@ -1,8 +1,6 @@
 const express = require('express')
 const cors = require('cors');
 const fs = require('fs');
-const distance = require('./distancecalc');
-const https = require('https');
 const endpoints = require('./endpoints');
 
 var app = express()

@@ -1,3 +1,6 @@
+const https = require('https');
+const distance = require('./distancecalc');
+
 module.exports = (req,res) => {
   var data = req.body;
 
