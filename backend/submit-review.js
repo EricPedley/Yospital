@@ -1,8 +1,6 @@
 const firestore = require('./firestore')
 
 module.exports = (req, res) => {
-    const settings = { timestampsInSnapshots: true };
-    firestore.settings(settings);
     let data = req.body;
     let collectionKey="hospitals";
     if (data && (typeof data === "object")) {

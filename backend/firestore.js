@@ -7,4 +7,9 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
-module.exports = admin.firestore();
+const settings = { timestampsInSnapshots: true };
+
+const firestore = admin.firestore();
+firestore.settings(settings);
+
+module.exports = firestore;
