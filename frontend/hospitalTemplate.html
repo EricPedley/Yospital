@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/hospitalTemplate.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/SimpleStarRating.js"></script>
-    <script src="js/hospital.js"></script>
 
-    <link rel="stylesheet" href="css/SimpleStarRating.css">
-    <title>Hospital</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/hospitalTemplate.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/SimpleStarRating.js"></script>
+  <script src="js/hospital.js"></script>
+
+  <link rel="stylesheet" href="css/SimpleStarRating.css">
+  <title>Hospital</title>
 </head>
+
 <body>
 
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-        AOS.init({
- duration: 1200
-});
-</script>
-    <h1 class = "h1" id="nameTitle"></h1>
-    <div class = "beg" id = "comment"> 
-    </div>
-    <div id = "iD"></div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1200
+    });
+  </script>
+  <h1 class="h1" id="nameTitle"></h1>
+  <div class="beg" id="comment">
+  </div>
+  <div id="iD"></div>
 
-    <center><div class="image"></div></center>
+  <center>
+    <div class="image"></div>
+  </center>
 
-      
-    <div class="item" data-aos="zoom-in"data-aos-easing="ease-in-cubic"
-    data-aos-duration="1000"><h2>Average Rating<p></p><div id= "average">
-            
+
+  <div class="item" data-aos="zoom-in" data-aos-easing="ease-in-cubic" data-aos-duration="1000">Average Rating<p></p>
+    <div id="average"></div>
+
     <!-- </div><br>
     <br>
     <button onclick="document.getElementById('id01').style.display='block'"
@@ -55,10 +59,10 @@
   </div>
 
 
-    <div class="item" data-aos="flip-left"
-    data-aos-easing="ease-out-cubic"
-    data-aos-duration="1000"><h2> Cultural Sensitivity
-        <p><div id = "cSen"></div>
+  <div class="item" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+    Cultural Sensitivity
+      <p>
+        <div id="cSen"></div>
         <!-- //<br> -->
         <!-- Trigger/Open The Modal<br>
 
@@ -76,13 +80,13 @@
             </div>
           </div>
         </div> -->
-      </div>
+  </div>
 
 
-    
-    <div class="item" data-aos="fade-right"data-aos-easing="ease-out-cubic"
-    data-aos-duration="1000"><h2>Hospitality<p>
-        <p><div id = "hosp"></div>
+
+  <div class="item" data-aos="fade-right" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+    Hospitality
+          <div id="hosp"></div>
           <!-- <br>
       <br>
       <button onclick="document.getElementById('id03').style.display='block'"
@@ -101,40 +105,26 @@
     </div></div> -->
   </div>
 
-    <div class="item" data-aos="fade-left"data-aos-easing="ease-out-cubic"
-    data-aos-duration="1000"><h2>Quality of Care<p>
-            <div id="qoc">
-            </div>
-            <!-- <br>
-            <button onclick="document.getElementById('id04').style.display='block'"
-            >Read More</button>
-            
-            The Modal 
-            <div id="id04" class="w3-modal">
-              <div class="w3-modal-content">
-                <div class="w3-container">
-                  <span onclick="document.getElementById('id04').style.display='none'"
-                  class="w3-button w3-display-topright">&times;</span>
-                  <div class ="review"></div>
-                </div>
-              </div>
-            </div>
-    </p></div> -->
+  <div class="item" data-aos="fade-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+    Quality of Care
+        <div id="qoc">
+        </div>
   </div>
 
-  <div class="item" data-aos="fade-left"data-aos-easing="ease-out-cubic"
-  data-aos-duration="1000" style = "height:500px;"><h2>Review<br>
-          <label>Cultural Sensitivity:<span id = 'c'class='rating'></span></label><br>
-          <label>Hospitality:<span id='h' class='rating'></span></label><br>
-          <label>Quality of Care:<span id='q' class='rating'></span></label><br>
-          <label>Comments:<input type ="text" id="comment"></input></label><br>
-          <input type ="button" value="Submit" id ="submitButton"></input>
-  </div>       
+  <div class="item" data-aos="fade-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000"
+    style="height:500px;">
+    Review<br>
+      <label>Cultural Sensitivity:<span id='c' class='rating'></span></label><br>
+      <label>Hospitality:<span id='h' class='rating'></span></label><br>
+      <label>Quality of Care:<span id='q' class='rating'></span></label><br>
+      <label>Comments:<input type="text" id="comment"></input></label><br>
+      <input type="button" value="Submit" id="submitButton"></input>
+  </div>
 
 
-</div>
+  </div>
 
-<!-- <script>
+  <!-- <script>
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -187,17 +177,18 @@ window.onclick = function(event) {
 }
 </script> -->
 
-    <script>
-            var ratings = document.getElementsByClassName('rating');
-            var rateVals=[0,0,0];
-            for (var i = 0; i < ratings.length; i++) {
-                var r = new SimpleStarRating(ratings[i]);
-    
-                ratings[i].addEventListener('rate', function (e) {
-                    console.log(this.value=e.detail);
-                });
-            }
-        </script>
+  <script>
+    var ratings = document.getElementsByClassName('rating');
+    var rateVals = [0, 0, 0];
+    for (var i = 0; i < ratings.length; i++) {
+      var r = new SimpleStarRating(ratings[i]);
+
+      ratings[i].addEventListener('rate', function (e) {
+        console.log(this.value = e.detail);
+      });
+    }
+  </script>
 
 </body>
+
 </html>
