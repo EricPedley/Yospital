@@ -108,13 +108,14 @@ function loadData(first) {
             let reviews = hospital.reviews;
             let cSens = 0, hosp = 0, qcare = 0;
             let total = 0;
-            reviews.forEach(review => {
-                let rating = review.rating;
-                cSens += rating["Cultural Sensitivity"];
-                hosp += rating["Hospitality"];
-                qcare += rating["Quality of Care"];
-                total++;
-            });
+            if (Array.isArray(reviews))
+              reviews.forEach(review => {
+                  let rating = review.rating;
+                  cSens += rating["Cultural Sensitivity"];
+                  hosp += rating["Hospitality"];
+                  qcare += rating["Quality of Care"];
+                  total++;
+              });
             if (total > 0) {
                 cSens /= total;
                 hosp /= total;

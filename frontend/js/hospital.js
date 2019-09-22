@@ -1,5 +1,3 @@
-
-
 var urlparameter = window.location.href;
 var url = new URL(urlparameter);
 var c = url.searchParams.get("id");
@@ -10,7 +8,7 @@ $(document).ready(() => {
     $("#submitButton").click(function(event) {
         let data = {
             [c]:{
-                id:"sample@example.com",
+                id: "sample@email.com",
                 name:"foo bar",
                 rating: {
                     "Cultural Sensitivity":$("#c").html().match(/star active/g).length,
