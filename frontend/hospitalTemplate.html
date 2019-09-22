@@ -123,9 +123,11 @@
   </div>
 
   <div class="item" data-aos="fade-left"data-aos-easing="ease-out-cubic"
-  data-aos-duration="1000"><h2>Review<p>
-          <div id="qoc">
-          </div>
+  data-aos-duration="1000"><h2>Review<br>
+          <label>Cultural Sensitivity:<span id = 'c'class='rating'></span></label><br>
+          <label>Hospitality:<span id='h' class='rating'></span></label><br>
+          <label>Quality of Care:<span id='q' class='rating'></span></label><br>
+          <input type ="button" value="Submit" id ="submitButton"></input>
   </div>       
 
 
@@ -186,12 +188,13 @@ window.onclick = function(event) {
 
     <script>
             var ratings = document.getElementsByClassName('rating');
-    
+            var rateVals=[0,0,0];
             for (var i = 0; i < ratings.length; i++) {
                 var r = new SimpleStarRating(ratings[i]);
     
                 ratings[i].addEventListener('rate', function (e) {
-                    console.log('Rating: ' + e.detail);
+                    console.log(rateVals[i]=e.detail);
+                    console.log(rateVals);
                 });
             }
         </script>
