@@ -15,6 +15,7 @@ app.use(cors());
 
 app.post('/hospital-list', endpoints["hospital-list"]);
 app.post('/hospital-info', endpoints["hospital-info"]);
+// TODO: endpoint for adding a review
 
 app.listen(3000);
 console.log("Now listening on port 3000");
