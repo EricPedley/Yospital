@@ -1,9 +1,10 @@
 var database;
-var counter = 0;
-var firstTen=[];
+var counter;
+var firstTen = [];
 $(document).ready(() => {
+    counter = 0;
     $(window).bind('scroll', function () {
-        if ($(window).scrollTop() >= $('#bottom').offset().top + $('#bottom').outerHeight() - window.innerHeight) {
+        if ($("#map").html() === '' && $(window).scrollTop() >= $('#bottom').offset().top + $('#bottom').outerHeight() - window.innerHeight) {
             loadData();
             updateRatings();
         }
@@ -40,40 +41,60 @@ function makeAPIPost(zipcode, callback) {
     });
 }
 
-function initMap() {
-    // The location of Uluru
-    var mapcenter = {lat: -25.344, lng: 131.036};
-    // The map, centered at Uluru
-    var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 4, center: mapcenter});
-    // The marker, positioned at Uluru
-    firstTen.forEach((hospital,index)=>{
-        let marker = new google.maps.Marker({position:{hospital.lat,hospital.long}})
-    });
-    var marker = new google.maps.Marker({position: mapcenter, label: "upside down land",map: map});
-  }
-
+function initMap() { }
+var map;
 function loadData(first) {
+    let ids = [];
     for (let i = 0; i < 10; i++) {
-        let hospital = database[counter];
-        if(first){
-            firstTen.push(hospital);
+        let hospital = database[counter];   
+        if (first) {
+            let pos = {
+                lat: hospital.lat,
+                lng: hospital.long
+            };
+            console.log(hospital);
+            if (i === 0) {
+                map = new google.maps.Map(
+                    document.getElementById('map'), { zoom: 13, center: pos });
+            }
+            var markerIcon = {
+                url: 'images/marker.png',
+                scaledSize: new google.maps.Size(40, 40),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(20, 40),
+                labelOrigin: new google.maps.Point(90,0)
+            };
+
+            let marker = new google.maps.Marker({
+                position: pos,
+                animation: google.maps.Animation.DROP,
+                icon: markerIcon,
+                label: {
+                    text: hospital.name,
+                    fontSize: '12px',
+                    fontWeight: 'bold'
+                },
+                map: map
+            })
         }
         let id = hospital.id;
-        let name = hospital.name;
-        let address = hospital.address;
-        let proximity = hospital.proximity;
-        let rating = hospital.rating;
-        let cSens = rating["Cultural Sensitivity"];
-        let hosp = rating["Hospitality"];
-        let qcare = rating["Quality of Care"];
-        if (i === 0)
-            console.log(address.replace(/\s/g, "+"));
-        let gmaps = "https://www.google.com/maps/place/" + address.replace(/\s/g, "+");
-        let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5"><a href="hospitalTemplate.html?id=' + id + '">' + name + '</a></font></center><div class="col-md-3"><font size="4">Distance: ' + Math.round(proximity * 10) / 10 + ' Miles</font></div>' + '<div class="col-md-12"><center><a href ="' + gmaps + '">' + address + '</a></center></div>' + '<font size="4"><div class="col-md-3">Overall: <br><span class="rating" data-default-rating="' + (hosp + cSens) / 2 + '" disabled></span></div><div class="col-md-3">Hospitality: <br><span class="rating" data-default-rating="' + hosp + '" disabled></span></div><div class="col-md-3">Cultural Sensitivity: <br><span class="rating" data-default-rating="' + cSens + '" disabled></span></div><div class="col-md-3">Quality of Care: <br><span class="rating" data-default-rating="' + qcare + '" disabled></span></div></font></div>';
-        $(element).appendTo("#summaries");
-        counter++;
+        ids.push(id);
     }
+    $.post("http://localhost:3000/hospital-info",JSON.stringify(ids),function(data) {
+        JSON.parse(data).forEach(hospital=>{
+            let name = hospital.name;
+            let address = hospital.address;
+            let proximity = hospital.proximity;
+            let rating = hospital.rating;
+            let cSens = rating["Cultural Sensitivity"];
+            let hosp = rating["Hospitality"];
+            let qcare = rating["Quality of Care"];
+            let gmaps = "https://www.google.com/maps/place/" + address.replace(/\s/g, "+");
+            let element = '<div class="col-md-12 border summary"><center class="col-md-9"><font size="5"><a href="hospitalTemplate.html?id=' + id + '">' + name + '</a></font></center><div class="col-md-3"><font size="4">Distance: ' + Math.round(proximity * 10) / 10 + ' Miles</font></div>' + '<div class="col-md-12"><center><a href ="' + gmaps + '">' + address + '</a></center></div>' + '<font size="4"><div class="col-md-3">Overall: <br><span class="rating" data-default-rating="' + (hosp + cSens) / 2 + '" disabled></span></div><div class="col-md-3">Hospitality: <br><span class="rating" data-default-rating="' + hosp + '" disabled></span></div><div class="col-md-3">Cultural Sensitivity: <br><span class="rating" data-default-rating="' + cSens + '" disabled></span></div><div class="col-md-3">Quality of Care: <br><span class="rating" data-default-rating="' + qcare + '" disabled></span></div></font></div>';
+            $(element).appendTo("#summaries");
+            counter++;
+        });
+    });
 }
 
 updateRatings = () => {
