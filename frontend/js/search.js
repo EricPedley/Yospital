@@ -13,37 +13,28 @@ $(document).ready(() => {
         if (event.keyCode === 13) {//enter key
             let zipcode = $('#zipinput').val();
             if (zipcode.match(/(^\d{5}$)|(^\d{5}-\d{4}$)/)) {//if input is a 5 digit number(zip code format)
-                makeAPIRequest(zipcode, function (apidata) {
+                makeAPIPost(zipcode, function (apidata) {
                     console.log(apidata);
                     console.log("starting foreach");
                     loadData();
                     $('#zip').html('');
+                    $('#map').html('<div class="mapouter"><div class="gmap_canvas"><iframe width="590" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q='+zipcode+'&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:590px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:590px;}</style></div>');
                     $('#botheader').html('<font size=6>Hospitals Near You:</font>');
                     updateRatings();
                 });
             } else {
                 alert("Please enter a zip code");
-                //$('<center id = "ziperror">Please enter a zip code</center>').appendTo('#zipinputdiv');
             }
         }
     });
 });
 
-function makeAPIRequest(zipcode, callback) {
-    console.log("Entered " + zipcode);
-    let response = '[{"name":"Example General Hospital","rating":{"Cultural Sensitivity":4.2,"Hospitality":1.3},"proximity":0.5},{"name":"Sample Text Hospital","rating":{"Cultural Sensitivity":2.6,"Hospitality":3.3},"proximity":1.9}]'
+function makeAPIPost(zipcode, callback) {
     $.post("http://localhost:3000/hospital-list", JSON.stringify({ zip: zipcode }), function (data) {
         console.log(data);
         database = JSON.parse(data);
         callback(database);
     });
-    // $.post({
-    //     url:"http//localhost:3000/hospital-list",
-    //     data:JSON.stringify({long:-122.419416,lat:37.774929}),
-    //     "Content-Type":"application/json",
-    //     success:function(data) {return JSON.parse(data)},
-
-    // });
 }
 
 function loadData() {
@@ -67,7 +58,6 @@ function loadData() {
 
 updateRatings = () => {
     var ratings = document.getElementsByClassName('rating');
-
     for (var i = 0; i < ratings.length; i++) {
         if (!ratings[i].style[0]) {
             var r = new SimpleStarRating(ratings[i]);
