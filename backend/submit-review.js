@@ -18,7 +18,7 @@ module.exports = (req, res) => {
 
                   firestore.collection(collectionKey).doc(docKey)
                     .update({reviews: rev})
-                    .then((res) => {
+                    .then((res1) => {
                         res.send(`Document ${docKey} successfully written!`);
                     }).catch((error) => {
                         res.status(500).send("Error writing document: " + error);
