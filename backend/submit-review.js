@@ -5,7 +5,7 @@ module.exports = (req, res) => {
     let collectionKey="hospitals";
     if (data && (typeof data === "object")) {
         Object.keys(data).forEach(docKey => {
-            firestore.collection(collectionkey).doc(docKey).get()
+            firestore.collection(collectionKey).doc(docKey).get()
               .then(doc => {
                 if (!doc.exists) {
                   res.status(400).send(`No such document "${docKey}"`);
