@@ -9,6 +9,7 @@ console.log("Reading hospitals.json into memory...");
 const hospitals = JSON.parse(fs.readFileSync('../hospitals.json'));
 
 app.use(express.json({type:"*/*"}));
+app.use(express.static('../frontend'));
 app.use(cors());
 
 app.post('/hospital-list', endpoints["hospital-list"]);
