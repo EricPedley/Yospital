@@ -30,11 +30,16 @@
     </p>
     <center><div class="image"></div></center>
 
+      
+    <div class="item" data-aos="zoom-in"data-aos-easing="ease-in-cubic"
+    data-aos-duration="1000"><h2>Average Rating</h2> <p>
+            <span class="rating" data-default-rating="5" disabled></span>
+    </p></div>
     <div class="item" data-aos="flip-left"
     data-aos-easing="ease-out-cubic"
     data-aos-duration="1000"><h2> Cultural Sensitivity
         <p><span class="rating" data-default-rating="5" disabled></span><br>
-        <!-- Trigger/Open The Modal -->
+        <!-- Trigger/Open The Modal --><br>
 <button id="myBtn">Read More</button>
 
 <!-- The Modal -->
@@ -46,22 +51,25 @@
     <p>Some text in the Modal..</p>
   </div></p>
     </h2></div>
-    <div class="item" data-aos="fade-down" data-aos-easing="ease-out-cubic"
-    data-aos-duration="1000"><h2>Microaggression</h2>
-<p><span class="rating" data-default-rating="5" disabled></span></p></div>
     <div class="item" data-aos="fade-right"data-aos-easing="ease-out-cubic"
     data-aos-duration="1000"><h2>Hospitality</h2><p>
-            <span class="rating" data-default-rating="5" disabled></span>
+            <span class="rating" data-default-rating="5" disabled></span><br>
+            <button id="myBtn1">Read More</button>
+
+<!-- The Modal -->
+<div id="myModal1" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close1">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
     </p></div>
     <div class="item" data-aos="fade-left"data-aos-easing="ease-out-cubic"
-    data-aos-duration="1000"><h2>Knowledgeable</h2><p>
+    data-aos-duration="1000"><h2>Quality of Care</h2><p>
             <span class="rating" data-default-rating="5" disabled></span>
     </p></div>
-    
-    <div class="item" data-aos="zoom-in"data-aos-easing="ease-in-cubic"
-    data-aos-duration="1000"><h2>Listening</h2> <p>
-            <span class="rating" data-default-rating="5" disabled></span>
-    </p></div>
+  
 
 
 
@@ -91,6 +99,31 @@ span.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+  }
+}
+// Get the modal
+var modal1 = document.getElementById("myModal1");
+
+// Get the button that opens the modal
+var btn1 = document.getElementById("myBtn1");
+
+// Get the <span> element that closes the modal
+var span1 = document.getElementsByClassName("close1")[0];
+
+// When the user clicks the button, open the modal 
+btn1.onclick = function() {
+  modal1.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span1.onclick = function() {
+  modal1.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal1) {
+    modal1.style.display = "none";
   }
 }
 </script>
