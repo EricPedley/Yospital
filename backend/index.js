@@ -14,32 +14,7 @@ app.use(cors());
 
 app.get('/', (req,res) => {
   // Send hospitals close to SF
-  let data = {lat: "37.774929", long: "-122.419418"};
-  let hospitalData = hospitals.map(x =>
-    {
-      return {
-        id: x.ID,
-        name: x.NAME,
-        address: `${x.ADDRESS}\n${x.CITY}, ${x.STATE}\n${x.ZIP}`,
-        proximity: distance(
-          parseFloat(data.lat),
-          parseFloat(data.long),
-          parseFloat(x.LATITUDE),
-          parseFloat(x.LONGITUDE)
-        ),
-        rating: {
-          "Cultural Sensitivity": 5,
-          "Hospitality": 5
-        }
-      };
-    }
-  );
-
-  let sorted = hospitalData.sort((a, b)=>{
-    return a.proximity - b.proximity;
-  });
-
-  res.send(JSON.stringify(sorted));
+  res.send(JSON.stringify(getHospitalData("37.774929", "-122.419418")));
 });
 
 app.post('/hospital-list', (req,res) => {
@@ -90,7 +65,8 @@ const getHospitalData = (lat, long) => {
         ),
         rating: {
           "Cultural Sensitivity": 5,
-          "Hospitality": 5
+          "Hospitality": 5,
+          "Quality of Care": 5
         }
       };
     }
