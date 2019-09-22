@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Jquery-->
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/SimpleStarRating.js"></script>
+    <link rel="stylesheet" href="css/SimpleStarRating.css">
+
+    <script src="js/search.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <!--Font Awesome image library-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .border {
+            border: 1px solid;
+        }
+
+        .botBorder {
+            border-bottom: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="top" class="container">
+        <div id="attributes" class="col-md-4 border">
+            <font size="7">
+                <center id="topheader">Find Doctors Who Are:</center>
+            </font>
+            <font size="6">
+                <center>
+                    <table>
+                        <tr>
+                            <td>Culturally Sensitive</td>
+                        </tr>
+                        <tr>
+                            <td>Attribute 2</td>
+                        </tr>
+                        <tr>
+                            <td>Attribute 3</td>
+                        </tr>
+                    </table>
+                </center>
+            </font>
+
+        </div>
+        <div id="map" class="col-md-8 border">
+            <center>map</center>
+            <center id="zip">
+                Enter your zip code:<div id="zipinputdiv"></div>
+            </center>
+        </div>
+    </div>
+    <div id="bottom" class="container">
+        <center id="botheader" class="row">
+            <font size=6>Hospitals Near You:</font>
+        </center>
+        <div id="summaries" class="container">
+            <div class="col-md-12 border">
+                <center class="col-md-9">
+                    <font size="5">Example Placeholder General Hospital</font>
+
+                </center>
+                <div class="col-md-3">
+                    <font size="4">Distance: 420 Miles</font>
+                </div>
+                <font size="4">
+                    <div class="col-md-4">
+                        Overall: <span class="rating" data-default-rating="0" disabled></span>
+                    </div>
+                    <div class="col-md-4">
+                        Hospitality: <span class="rating" data-default-rating="2.9" disabled></span>
+                    </div>
+                    <div class="col-md-4">
+                        Cultural Sensitivity: <span class="rating" data-default-rating="2.9" disabled></span>
+                    </div>
+                </font>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        var ratings = document.getElementsByClassName('rating');
+
+        for (var i = 0; i < ratings.length; i++) {
+            var r = new SimpleStarRating(ratings[i]);
+
+            ratings[i].addEventListener('rate', function (e) {
+                console.log('Rating: ' + e.detail);
+            });
+        }
+    </script>
+</body>
+
+</html>
