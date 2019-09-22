@@ -13,6 +13,7 @@ app.use(cors());
 
 app.post('/hospital-list', endpoints["hospital-list"]);
 app.post('/hospital-info', endpoints["hospital-info"]);
+app.post('/submit-review', endpoints["submit-review"]);
 // TODO: endpoint for adding a review
 
 app.listen(3000);

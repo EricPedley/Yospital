@@ -33,6 +33,8 @@ Returns JSON data in following format:
     "name": "...",
     "address": "...",
     "proximity": ".2", //in miles
+    "lat": "...",
+    "long": "...",
     "rating": {
       // all out of 5 stars
       "Cultural Sensitivity": "4.9",
