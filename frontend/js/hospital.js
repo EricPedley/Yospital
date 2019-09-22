@@ -141,16 +141,17 @@ function loadData() {
 
 
 
-updateRatings = ()=>{
+updateRatings = () => {
     var ratings = document.getElementsByClassName('rating');
-
-        for (var i = 0; i < ratings.length; i++) {
+    for (var i = 0; i < ratings.length; i++) {
+        if (!ratings[i].style[0]) {
             var r = new SimpleStarRating(ratings[i]);
 
             ratings[i].addEventListener('rate', function (e) {
-                ratings[i].value=e.details;
+                console.log('Rating: ' + e.detail);
             });
         }
+    }
 };
 
 function postReview(review) {
