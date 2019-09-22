@@ -15,7 +15,7 @@ $(document).ready(() => {
                     "Hospitality": $("#h").html().match(/star active/g).length,
                     "Quality of Care": $("#q").html().match(/star active/g).length
                 },
-                comment: $("#comment").val()
+                comment: $("input#comment").val()
             }
         }
         postReview(data);
