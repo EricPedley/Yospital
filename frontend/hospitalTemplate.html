@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/hospitalTemplate.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <script src="js/jquery.min.js"></script>
     <script src="js/SimpleStarRating.js"></script>
     <script src="js/hospital.js"></script>
-    <script src="js/jquery.min.js"></script>
+
     <link rel="stylesheet" href="css/SimpleStarRating.css">
     <title>Hospital</title>
 </head>
@@ -24,7 +25,10 @@
  duration: 1200
 });
 </script>
-    <h1>Hospital</h1>
+    <h1 id="nameTitle", font-size= "75px",
+    font-weight="bold",
+    text-align="center",
+    color="#FF553D"></h1>
     <p class = "beg"> 
         This is the page where you find reviews
         of the hospital near you and to determine if they are fit 
@@ -34,50 +38,98 @@
 
       
     <div class="item" data-aos="zoom-in"data-aos-easing="ease-in-cubic"
-    data-aos-duration="1000"><h2>Average Rating</h2> <div id= "average">
+    data-aos-duration="1000"><h2>Average Rating<p></p><div id= "average">
             
-    </div></div>
+    </div><br>
+    <br>
+    <button onclick="document.getElementById('id01').style.display='block'"
+    >Read More</button>
+    
+    <!-- The Modal -->
+    <div id="id01" class="w3-modal">
+      <div class="w3-modal-content">
+        <div class="w3-container">
+          <span onclick="document.getElementById('id01').style.display='none'"
+          class="w3-button w3-display-topright">&times;</span>
+          <p>Some text in the Modal..</p>
+          <p>Some text in the Modal..</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
     <div class="item" data-aos="flip-left"
     data-aos-easing="ease-out-cubic"
     data-aos-duration="1000"><h2> Cultural Sensitivity
         <p><div id = "cSen"></div><br>
         <!-- Trigger/Open The Modal --><br>
-<button id="myBtn">Read More</button>
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
+        <button onclick="document.getElementById('id02').style.display='block'"
+        >Read More</button>
+        
+        <!-- The Modal -->
+        <div id="id02" class="w3-modal">
+          <div class="w3-modal-content">
+            <div class="w3-container">
+              <span onclick="document.getElementById('id02').style.display='none'"
+              class="w3-button w3-display-topright">&times;</span>
+              <p>Some text in the Modal..</p>
+              <p>Some text in the Modal..</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div id ="data">
-  </div></p>
-    </h2></div>
+
+    
     <div class="item" data-aos="fade-right"data-aos-easing="ease-out-cubic"
-    data-aos-duration="1000"><h2>Hospitality</h2><p>
-            <div id = "hosp"></div>
-            <button id="myBtn1">Read More</button>
+    data-aos-duration="1000"><h2>Hospitality<p>
+        <p><div id = "hosp"></div><br>
+      <br>
+      <button onclick="document.getElementById('id03').style.display='block'"
+      >Read More</button>
+      
+      <!-- The Modal -->
+      <div id="id03" class="w3-modal">
+        <div class="w3-modal-content">
+          <div class="w3-container">
+            <span onclick="document.getElementById('id03').style.display='none'"
+            class="w3-button w3-display-topright">&times;</span>
+            <div class ="review"></div>
+          </div>
+        </div>
+      </div>
+    </div></div>
 
-<!-- The Modal -->
-<div id="myModal1" class="modal1">
 
-  <!-- Modal content -->
-  <div class="modal-content1">
-    <span class="close1">&times;</span>
-    <p id = "data"></p>
-  </div>
-    </p></div>
-    <!-- <div class="item" data-aos="fade-left"data-aos-easing="ease-out-cubic"
+    <div class="item" data-aos="fade-left"data-aos-easing="ease-out-cubic"
     data-aos-duration="1000"><h2>Quality of Care</h2><p>
-            <span class="rating" data-default-rating="5" disabled></span>
-    </p></div> -->
+            <div id="hosp">
+
+            </div>
+            <br>
+            <button onclick="document.getElementById('id04').style.display='block'"
+            >Read More</button>
+            
+            <!-- The Modal -->
+            <div id="id04" class="w3-modal">
+              <div class="w3-modal-content">
+                <div class="w3-container">
+                  <span onclick="document.getElementById('id04').style.display='none'"
+                  class="w3-button w3-display-topright">&times;</span>
+                  <div class ="review"></div>
+                </div>
+              </div>
+            </div>
+    </p></div>
   
 
 
 
 </div>
 
-<script>
+<!-- <script>
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -128,7 +180,7 @@ window.onclick = function(event) {
     modal1.style.display = "none";
   }
 }
-</script>
+</script> -->
 
     <script>
             var ratings = document.getElementsByClassName('rating');
