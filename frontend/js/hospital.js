@@ -51,12 +51,18 @@ function loadData() {
       reviews = Object.values(reviews);
     let rating = reviews[0] ? reviews[0].rating : undefined;
     let ratingView = '<div class="col-md-3"><font size="4">' + rating + '</font></div>';
-    let cSens = rating ? rating["Cultural Sensitivity"] : 0;
+    let csname = "Cultural Sensitivity";
+    let hospname = "Hospitality";
+    let qocname = "Quality of Care";
+    let cSens = rating ?
+      reviews.reduce((a,c)=>a+parseInt(c.rating[csname]), 0)/reviews.length : 0;
     let idName = '<div><font size= "30">' + '-' + id + '</font></div>';
     let cSensRating = '<span class="rating" data-default-rating="' + cSens + '" disabled></span>';
     let comments = rating ? reviews[0].comment : "No one has rated this hospital yet";
-    let hosp = rating ? rating["Hospitality"] : 0;
-    let qoc = rating ? rating["Quality of Care"] : 0
+    let hosp = rating ?
+      reviews.reduce((a,c)=>a+parseInt(c.rating[hospname]), 0)/reviews.length : 0;
+    let qoc = rating ?
+      reviews.reduce((a,c)=>a+parseInt(c.rating[qocname]), 0)/reviews.length : 0;
     let hospRating = '<span class="rating" data-default-rating="' + hosp + '" disabled></span>';
     let average = '<span class="rating" data-default-rating="' + (hosp + cSens + qoc) / 3 + '" disabled></span>';
     let QOC = '<span class="rating" data-default-rating="' + qoc + '" disabled></span>';
