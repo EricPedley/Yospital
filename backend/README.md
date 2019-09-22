@@ -54,7 +54,7 @@ Returns JSON data in following format:
 ]
 ```
 
-## `localhost:3000/reviews`
+## `localhost:3000/hospital-info`
 Accepts POST request with following data in JSON format:
 ```js
 {
@@ -63,20 +63,25 @@ Accepts POST request with following data in JSON format:
 ```
 Returns JSON data in following format:
 ```js
-[
-	{
-		"id": "me@example.com",
-		"name": "Jane Doe",
-    "rating": {
-      // The following are all numbers from 1 to 5
-      "Cultural Sensitivity": "...",
-      "Hospitality": "...",
-      "Quality of Care": "..."
+{
+  name: "",
+  address: "",
+  lat: "",
+  long: "",
+  website: "",
+  reviews: [
+    {
+  		"id": "me@example.com",
+  		"name": "Jane Doe",
+      "rating": {
+        // The following are all numbers from 1 to 5
+        "Cultural Sensitivity": "...",
+        "Hospitality": "...",
+        "Quality of Care": "..."
+      },
+  		"comment": "..."
     },
-		"comment": "..."
-	},
-	{ ... },
-	{ ... },
-	...
-]
+    ...
+  ]
+}
 ```
