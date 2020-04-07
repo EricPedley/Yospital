@@ -1,15 +1,17 @@
 var firebaseConfig = {
-    apiKey: "AIzaSyD3c9raAeUHaUKQ9AgMSocycl5Kb3FEIxg",
-    authDomain: "justcare.firebaseapp.com",
-    databaseURL: "https://justcare.firebaseio.com",
-    projectId: "justcare",
-    storageBucket: "justcare.appspot.com",
-    messagingSenderId: "482000803486",
-    appId: "1:482000803486:web:6cd146b3233f53fdd04d8f"
-  };
+  apiKey: "AIzaSyC1BCYOage1fSiIRVXN8TfvaSLEg8JKWVg",
+  authDomain: "justcare-1569097818908.firebaseapp.com",
+  databaseURL: "https://justcare-1569097818908.firebaseio.com",
+  projectId: "justcare-1569097818908",
+  storageBucket: "justcare-1569097818908.appspot.com",
+  messagingSenderId: "402416346671",
+  appId: "1:402416346671:web:cd922f242c03429dca08da",
+  measurementId: "G-T7K2J4G22X"
+};
 firebase.initializeApp(firebaseConfig);
 
 firebase.auth().onAuthStateChanged(function (user) {
+    
     if (user) {
         document.getElementById("userDisplay").innerHTML = "Hello, " + user.email + ". " + "<a onClick='signOut()'> Sign out?</a>";
     }
