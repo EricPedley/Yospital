@@ -2,6 +2,7 @@ const db = require('./firestore');
 
 module.exports = (req, res) => {
   var data = req.body;
+  console.log(data);
   if (!data.id && !data.ids)
     res.status(400).send("Must send one or more hospital IDs.");
   if (data.id)
@@ -19,7 +20,7 @@ module.exports = (req, res) => {
       const promises = await Promise.all(refs.map(x=>t.get(x)));
       return Object.assign(...data.ids.map((k,i) => ({[k]: promises[i].data()})))
     };
-    let transaction = db.runTransaction(updateFunction)
+    db.runTransaction(updateFunction)
       .then(result => {
         res.send(JSON.stringify(result));
       })
