@@ -1,8 +1,9 @@
 {
   "name": "justcare",
-  "version": "1.0.0",
-  "description": "finds hospitals in your area and lets you rate them",
+  "version": "0.0.1",
+  "description": "",
   "main": "backend/index.js",
+  "client": "npm start --prefix client",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/index.js"
@@ -11,15 +12,22 @@
     "type": "git",
     "url": "git+https://github.com/EricPedley/justcare.git"
   },
-  "author": "",
-  "license": "ISC",
+  "contributors": [
+    "Eric Pedley <ericpedley@gmail.com>",
+    "Alex Peng <alexander.j.peng@gmail.com>",
+    "Andrew Vuong <anvuong3@s.sfusd.edu>",
+    "Alex Ruiz <ruiz.alex0302@gmail.com>"
+  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/EricPedley/justcare/issues"
   },
   "homepage": "https://github.com/EricPedley/justcare#readme",
   "dependencies": {
+    "core-util-is": "^1.0.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "firebase-admin": "^8.10.0"
+    "firebase-admin": "^8.6.0",
+    "package-lock.json": "^1.0.0"
   }
 }
