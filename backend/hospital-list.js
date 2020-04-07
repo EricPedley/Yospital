@@ -1,8 +1,6 @@
 const https = require('https');
 const distance = require('./distancecalc');
-const fs = require('fs');
-
-const hospitals = JSON.parse(fs.readFileSync('../hospitals.json'));
+const hospitals = require('./hospitals.json');
 
 module.exports = (req,res) => {
   var data = req.body;
@@ -15,7 +13,7 @@ module.exports = (req,res) => {
     res.send(JSON.stringify(getHospitalData(data.lat, data.long)));
   else if (data.zip)
     https.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${data.zip}&key=AIzaSyDWPDBtuM_FeyGfD58O3LTNzyx_z7TeREI`,
+      `https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-zip-code-latitude-and-longitude&q=${data.zip}&rows=1`,
       res2 => {
         if (res2.statusCode !== 200)
           res.status(400).send("Bad zipcode!");
@@ -25,8 +23,8 @@ module.exports = (req,res) => {
         res2.on('end', () => {
           try {
             const geocodeData = JSON.parse(rawData);
-            let lat = geocodeData.results[0].geometry.location.lat;
-            let long = geocodeData.results[0].geometry.location.lng;
+            let lat = geocodeData.records[0].fields.latitude;
+            let long = geocodeData.records[0].fields.longitude;
             res.send(JSON.stringify(getHospitalData(lat, long)));
           } catch (err) {
             res.status(500).send("Google Maps API sent bad response");
