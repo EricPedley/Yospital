@@ -2,7 +2,7 @@ var database;
 var counter;
 var firstTen = [];
 $(document).ready(() => {
-    doTesterStuff();
+    console.log("this part is running");
     counter = 0;
     $(window).bind('scroll', function () {
         if ($("#map").html() !== '' && $(window).scrollTop() >= $('#bottom').offset().top + $('#bottom').outerHeight() - window.innerHeight) {
