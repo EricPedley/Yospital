@@ -86,7 +86,7 @@ body {
   }
 
   .image{
-      background-image: url("/frontend/images/scroll.gif");
+      background-image: url("../images/scroll.gif");
       padding: 30px;
       background-size: 100%;
       height:100px;
