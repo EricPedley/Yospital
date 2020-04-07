@@ -12,7 +12,7 @@ app.use(express.json({type:"*/*"}));
 app.use(express.static('frontend'));
 app.use(cors());
 
-//app.get('/', (req,res)=>{res.redirect('landing.html')});
+app.get('/', (req,res)=>{res.redirect('landing.html')});
 
 app.post('/hospital-list', endpoints["hospital-list"]);
 app.post('/hospital-info', endpoints["hospital-info"]);
