@@ -1,3 +1,9 @@
+# Hospital Review Website
+![project screenshot](https://user-images.githubusercontent.com/48658337/125121265-824acd80-e0a8-11eb-8064-9f4943411493.png)
+[Demo Link](https://justcare.herokuapp.com/landing.html)
+## Description
+  Allows users to find nearby hospitals and to read and post reviews. It uses an Express backend to talk to Firebase and uses Bootstrap for frontend styling.
+
 # Justcare server
 Welcome. This is a guide to using the server's API endpoints.
 
