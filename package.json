@@ -23,11 +23,9 @@
   },
   "homepage": "https://github.com/EricPedley/justcare#readme",
   "dependencies": {
-    "core-util-is": "^1.0.2",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "firebase-admin": "^8.6.0",
-    "package-lock.json": "^1.0.0",
-    "heroku-cli": "^7.0.9"
+    "firebase-admin": "^8.6.0"
   }
 }

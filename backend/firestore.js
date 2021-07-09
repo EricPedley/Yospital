@@ -1,8 +1,11 @@
 const admin = require('firebase-admin');
 
 //Secret key stored at ./secretkey.json
-let secretKey = require('./secretkey.json')
-if(!secretKey) {
+let secretKey;
+try {
+  secretKey = require('./secretkey.json')
+}
+catch(error) {
   let encodedKey=process.env.SECRET_KEY_ENCODED;
   if(!encodedKey) {
     require("dotenv").config()
